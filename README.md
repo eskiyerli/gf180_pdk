@@ -9,12 +9,17 @@ installation.
 
 Alternatively, you could use *Revolution EDA Options* dialog by choosing *Options* menu
 from *Revolution EDA* main window:
+
 <img width="871" height="665" alt="revedaOptionsDialogue" src="https://github.com/user-attachments/assets/2fa757a0-5a82-420b-910b-6222715425a4" />
+
 You  might need to restart the Revolution EDA if the PDK is changed to propagate the paths throughout the software.
 
 You would also need to add *g180_mcu* directory in *Library Browser*:
+
 <img width="816" height="723" alt="libraryPathSelection" src="https://github.com/user-attachments/assets/f5d0d6f4-bda4-41ba-86d4-09871c02774b" />
+
 <img width="701" height="501" alt="gf180Library" src="https://github.com/user-attachments/assets/5057e9d8-ec72-482e-85af-ad4ad25e5c57" />
+
 You could now use the available symbols in creating schematics.
 
 Note that **Revolution EDA** PDKs should always following files under the PDK installation directory:
