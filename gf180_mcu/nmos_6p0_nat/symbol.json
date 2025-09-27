@@ -642,7 +642,7 @@
     {
         "type": "attr",
         "nam": "XyceSymbolNetlistLine",
-        "def": "%spiceprefix@instName @pinList %modelName L=@L W=@W nf=@nf ad=@ad as=@as pd=@pd ps=@ps nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd m=@m"
+        "def": "%spiceprefix@instName %pinOrder %modelName L=@L W=@W nf=@nf ad=@ad as=@as pd=@pd ps=@ps nrd=@nrd nrs=@nrs sa=@sa sb=@sb sd=@sd m=@m"
     },
     {
         "type": "attr",

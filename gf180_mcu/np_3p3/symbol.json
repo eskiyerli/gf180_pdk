@@ -284,7 +284,7 @@
     {
         "type": "attr",
         "nam": "XyceSymbolNetlistLine",
-        "def": "%spicePrefix@instName @pinList %model area=@area  pj=@pj m=@m"
+        "def": "%spicePrefix@instName %pinOrder %model area=@area  pj=@pj m=@m"
     },
     {
         "type": "attr",

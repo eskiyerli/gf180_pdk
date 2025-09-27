@@ -252,7 +252,7 @@
     {
         "type": "attr",
         "nam": "XyceSymbolNetlistLine",
-        "def": "%spiceprefix@instName @pinList %modelName c_width=@W c_length=@L m=@m"
+        "def": "%spiceprefix@instName %pinOrder %modelName c_width=@W c_length=@L m=@m"
     },
     {
         "type": "attr",
