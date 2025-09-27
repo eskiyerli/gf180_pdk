@@ -33,9 +33,10 @@ class baseInst:
 class dnwpw(baseInst):
     def __init__(self, labels_dict: dict):
         super().__init__(labels_dict)
+        print(self._labelsDict)
         self.r_w = Quantity(self._labelsDict['@r_w'].labelValue)
         self.r_l = Quantity(self._labelsDict['@r_l'].labelValue)
-        self.m = Quantity(self._labelsDict['@m'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
 
     def area_parm(self):
         return self.r_w * self.r_l
@@ -49,7 +50,7 @@ class mim_2p0fF(baseInst):
         super().__init__(labels_dict)
         self.W = Quantity(self._labelsDict['@W'].labelValue)
         self.L = Quantity(self._labelsDict['@L'].labelValue)
-        self.m = Quantity(self._labelsDict['@m'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
 
 
 class nmos_3p3(baseInst):
@@ -58,8 +59,8 @@ class nmos_3p3(baseInst):
 
         self.W = Quantity(self._labelsDict['@W'].labelValue)
         self.L = Quantity(self._labelsDict['@L'].labelValue)
-        self.m = Quantity(self._labelsDict['@m'].labelValue)
-        self.nf = Quantity(self._labelsDict['@nf'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+        self.nf = int(self._labelsDict['@nf'].labelValue)
 
 
     def ad_parm(self):
@@ -92,12 +93,11 @@ class nmos_3p3_sab(baseInst):
         super().__init__(labels_dict)
         self.W = Quantity(self._labelsDict['@W'].labelValue)
         self.L = Quantity(self._labelsDict['@L'].labelValue)
-        self.m = Quantity(self._labelsDict['@m'].labelValue)
-        self.nf = Quantity(self._labelsDict['@nf'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+        self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
-        return (int((
-                                self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
             '0.18u').real)
 
     def pd_parm(self):
@@ -105,8 +105,7 @@ class nmos_3p3_sab(baseInst):
                 self.W.real / self.nf.real + Quantity('0.18u').real))
 
     def as_parm(self):
-        return (int((
-                                self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
             '0.18u').real)
 
     def ps_parm(self):
@@ -125,8 +124,8 @@ class nmos_6p0(baseInst):
         super().__init__(labels_dict)
         self.W = Quantity(self._labelsDict['@W'].labelValue)
         self.L = Quantity(self._labelsDict['@L'].labelValue)
-        self.m = Quantity(self._labelsDict['@m'].labelValue)
-        self.nf = Quantity(self._labelsDict['@nf'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+        self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
         return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
@@ -156,8 +155,8 @@ class nmos_6p0_nat(baseInst):
         super().__init__(labels_dict)
         self.W = Quantity(self._labelsDict['@W'].labelValue)
         self.L = Quantity(self._labelsDict['@L'].labelValue)
-        self.m = Quantity(self._labelsDict['@m'].labelValue)
-        self.nf = Quantity(self._labelsDict['@nf'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+        self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
         return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
@@ -180,3 +179,59 @@ class nmos_6p0_nat(baseInst):
 
     def nrs_parm(self):
         return Quantity('0.18u').real / self.W.real
+
+
+class nmoscap_3p3(baseInst):
+    def __init__(self, labels_dict:dict):
+        super().__init__(labels_dict)
+        self.W = Quantity(self._labelsDict['@W'].labelValue)
+        self.L = Quantity(self._labelsDict['@L'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+
+class nmoscap_6p0(baseInst):
+    def __init__(self, labels_dict:dict):
+        super().__init__(labels_dict)
+        self.W = Quantity(self._labelsDict['@W'].labelValue)
+        self.L = Quantity(self._labelsDict['@L'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+
+
+
+class np_3p3(baseInst):
+    def __init__(self, labels_dict:dict):
+        super().__init__(labels_dict)
+        self.r_w = Quantity(self._labelsDict['@r_w'].labelValue)
+        self.r_l = Quantity(self._labelsDict['@r_l'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+
+    def area_parm(self):
+        return self.r_w * self.r_l
+
+    def pj_parm(self):
+        return 2 * (self.r_w + self.r_l)
+
+
+class nplus_u(baseInst):
+    def __init__(self, labels_dict:dict):
+        super().__init__(labels_dict)
+        self.W = Quantity(self._labelsDict['@W'].labelValue)
+        self.L = Quantity(self._labelsDict['@L'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+
+
+class npolyf_u(baseInst):
+    def __init__(self, labels_dict:dict):
+        super().__init__(labels_dict)
+        self.W = Quantity(self._labelsDict['@W'].labelValue)
+        self.L = Quantity(self._labelsDict['@L'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+
+
+class nwell(baseInst):
+    def __init__(self, labels_dict:dict):
+        super().__init__(labels_dict)
+        self.W = Quantity(self._labelsDict['@W'].labelValue)
+        self.L = Quantity(self._labelsDict['@L'].labelValue)
+        self.m = int(self._labelsDict['@m'].labelValue)
+
+
