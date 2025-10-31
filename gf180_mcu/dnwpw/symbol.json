@@ -9,31 +9,6 @@
         ]
     },
     {
-        "type": "label",
-        "st": [
-            -30,
-            -70
-        ],
-        "nam": "@modelName",
-        "def": "[@modelName]",
-        "txt": "[@modelName]",
-        "val": "",
-        "vis": true,
-        "lt": "NLPLabel",
-        "ht": 12,
-        "al": "Left",
-        "or": "R0",
-        "use": "Normal",
-        "loc": [
-            -40.0,
-            30.0
-        ],
-        "fl": [
-            1,
-            1
-        ]
-    },
-    {
         "type": "line",
         "st": [
             -40,
@@ -156,6 +131,31 @@
     {
         "type": "label",
         "st": [
+            -30,
+            -70
+        ],
+        "nam": "@modelName",
+        "def": "[@modelName]",
+        "txt": "[@modelName]",
+        "val": "",
+        "vis": true,
+        "lt": "NLPLabel",
+        "ht": 12,
+        "al": "Left",
+        "or": "R0",
+        "use": "Normal",
+        "loc": [
+            -40.0,
+            30.0
+        ],
+        "fl": [
+            1,
+            1
+        ]
+    },
+    {
+        "type": "label",
+        "st": [
             40,
             -130
         ],
@@ -273,10 +273,29 @@
         ]
     },
     {
+        "type": "pin",
+        "st": [
+            0,
+            120
+        ],
+        "nam": "m",
+        "pd": "Inout",
+        "pt": "Signal",
+        "loc": [
+            0.0,
+            0.0
+        ],
+        "ang": 0.0,
+        "fl": [
+            1.0,
+            1.0
+        ]
+    },
+    {
         "type": "label",
         "st": [
             40,
-            -40
+            30
         ],
         "nam": "@area",
         "def": "area=area_parm",
@@ -300,8 +319,8 @@
     {
         "type": "label",
         "st": [
-            50,
-            -70
+            40,
+            -30
         ],
         "nam": "@r_w",
         "def": "[@r_w:r_w=%:r_w=3u]",
@@ -323,27 +342,8 @@
         ]
     },
     {
-        "type": "pin",
-        "st": [
-            0,
-            120
-        ],
-        "nam": "m",
-        "pd": "Inout",
-        "pt": "Signal",
-        "loc": [
-            0.0,
-            0.0
-        ],
-        "ang": 0.0,
-        "fl": [
-            1.0,
-            1.0
-        ]
-    },
-    {
         "type": "attr",
-        "nam": "XyceSymbolNetlistLine",
+        "nam": "SpiceNetlistLine",
         "def": "D@instName %pinOrder %modelName area=@area  m=@m"
     },
     {

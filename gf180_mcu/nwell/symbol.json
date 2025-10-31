@@ -412,7 +412,7 @@
     },
     {
         "type": "attr",
-        "nam": "XyceSymbolNetlistLine",
+        "nam": "SpiceNetlistLine",
         "def": "%spiceprefix@instName %pinOrder %modelName r_width=@W r_length=@L m=@m"
     },
     {

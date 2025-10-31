@@ -1,6 +1,6 @@
 [
     {
-        "cellView": "symbol"
+        "viewType": "symbol"
     },
     {
         "snapGrid": [
@@ -9,176 +9,28 @@
         ]
     },
     {
-        "type": "line",
-        "st": [
-            0,
-            20
-        ],
-        "end": [
-            0,
-            120
-        ],
-        "loc": [
-            0.0,
-            0.0
-        ],
-        "ang": 0.0,
-        "fl": [
-            1.0,
-            1.0
-        ]
-    },
-    {
-        "type": "line",
-        "st": [
-            0,
-            -120
-        ],
-        "end": [
-            0,
-            -20
-        ],
-        "loc": [
-            0.0,
-            0.0
-        ],
-        "ang": 0.0,
-        "fl": [
-            1.0,
-            1.0
-        ]
-    },
-    {
-        "type": "line",
-        "st": [
-            -40,
-            20
-        ],
-        "end": [
-            40,
-            20
-        ],
-        "loc": [
-            0.0,
-            0.0
-        ],
-        "ang": 0.0,
-        "fl": [
-            1.0,
-            1.0
-        ]
-    },
-    {
         "type": "polygon",
         "ps": [
             [
                 0.0,
-                20.0
+                40.0
             ],
             [
                 -40.0,
-                -20.0
+                0.0
             ],
             [
                 40.0,
-                -20.0
+                0.0
             ],
             [
                 0.0,
-                20.0
+                40.0
             ]
         ],
         "fl": [
-            1.0,
-            1.0
-        ]
-    },
-    {
-        "type": "label",
-        "st": [
-            40,
-            -60
-        ],
-        "nam": "@r_w",
-        "def": "[@r_w:r_w=%:r_w=3u]",
-        "txt": "[@r_w:r_w=%:r_w=3u]",
-        "val": "",
-        "vis": true,
-        "lt": "NLPLabel",
-        "ht": 12,
-        "al": "Left",
-        "or": "R0",
-        "use": "Normal",
-        "loc": [
-            40.0,
-            -60.0
-        ],
-        "fl": [
             1,
             1
-        ]
-    },
-    {
-        "type": "label",
-        "st": [
-            60,
-            0
-        ],
-        "nam": "@m",
-        "def": "[@m:m=%:m=1]",
-        "txt": "[@m:m=%:m=1]",
-        "val": "",
-        "vis": true,
-        "lt": "NLPLabel",
-        "ht": 12,
-        "al": "Left",
-        "or": "R0",
-        "use": "Normal",
-        "loc": [
-            40.0,
-            -20.0
-        ],
-        "fl": [
-            1,
-            1
-        ]
-    },
-    {
-        "type": "pin",
-        "st": [
-            0,
-            -120
-        ],
-        "nam": "p",
-        "pd": "Inout",
-        "pt": "Signal",
-        "loc": [
-            0.0,
-            0.0
-        ],
-        "ang": 0.0,
-        "fl": [
-            1.0,
-            1.0
-        ]
-    },
-    {
-        "type": "pin",
-        "st": [
-            0,
-            120
-        ],
-        "nam": "m",
-        "pd": "Inout",
-        "pt": "Signal",
-        "loc": [
-            0.0,
-            0.0
-        ],
-        "ang": 0.0,
-        "fl": [
-            1.0,
-            1.0
         ]
     },
     {
@@ -199,7 +51,32 @@
         "use": "Normal",
         "loc": [
             40.0,
-            -140.0
+            -180.0
+        ],
+        "fl": [
+            1,
+            1
+        ]
+    },
+    {
+        "type": "label",
+        "st": [
+            40,
+            -60
+        ],
+        "nam": "@r_w",
+        "def": "[@r_w:r_w=%:r_w=3u]",
+        "txt": "[@r_w:r_w=%:r_w=3u]",
+        "val": "",
+        "vis": true,
+        "lt": "NLPLabel",
+        "ht": 12,
+        "al": "Left",
+        "or": "R0",
+        "use": "Normal",
+        "loc": [
+            40.0,
+            -160.0
         ],
         "fl": [
             1,
@@ -224,7 +101,136 @@
         "use": "Normal",
         "loc": [
             40.0,
-            -40.0
+            -140.0
+        ],
+        "fl": [
+            1,
+            1
+        ]
+    },
+    {
+        "type": "label",
+        "st": [
+            60,
+            0
+        ],
+        "nam": "@m",
+        "def": "[@m:m=%:m=1]",
+        "txt": "[@m:m=%:m=1]",
+        "val": "",
+        "vis": true,
+        "lt": "NLPLabel",
+        "ht": 12,
+        "al": "Left",
+        "or": "R0",
+        "use": "Normal",
+        "loc": [
+            40.0,
+            -120.0
+        ],
+        "fl": [
+            1,
+            1
+        ]
+    },
+    {
+        "type": "line",
+        "st": [
+            0,
+            -60
+        ],
+        "end": [
+            0,
+            0
+        ],
+        "loc": [
+            0.0,
+            -120.0
+        ],
+        "ang": 0.0,
+        "fl": [
+            1,
+            1
+        ]
+    },
+    {
+        "type": "line",
+        "st": [
+            -40,
+            20
+        ],
+        "end": [
+            40,
+            20
+        ],
+        "loc": [
+            0.0,
+            -100.0
+        ],
+        "ang": 0.0,
+        "fl": [
+            1.0,
+            1.0
+        ]
+    },
+    {
+        "type": "line",
+        "st": [
+            0,
+            120
+        ],
+        "end": [
+            0,
+            40
+        ],
+        "loc": [
+            0.0,
+            -120.0
+        ],
+        "ang": 0.0,
+        "fl": [
+            1,
+            1
+        ]
+    },
+    {
+        "type": "pin",
+        "st": [
+            0,
+            -120
+        ],
+        "nam": "p",
+        "pd": "Inout",
+        "pt": "Signal",
+        "loc": [
+            0.0,
+            -60.0
+        ],
+        "ang": 0.0,
+        "fl": [
+            1.0,
+            1.0
+        ]
+    },
+    {
+        "type": "label",
+        "st": [
+            40,
+            60
+        ],
+        "nam": "@pj",
+        "def": "pj=pj_parm",
+        "txt": "pj = pj_parm",
+        "val": "",
+        "vis": true,
+        "lt": "PyLabel",
+        "ht": 12,
+        "al": "Left",
+        "or": "R0",
+        "use": "Normal",
+        "loc": [
+            40.0,
+            -60.0
         ],
         "fl": [
             1,
@@ -249,7 +255,7 @@
         "use": "Normal",
         "loc": [
             40.0,
-            40.0
+            -80.0
         ],
         "fl": [
             1,
@@ -257,33 +263,27 @@
         ]
     },
     {
-        "type": "label",
+        "type": "pin",
         "st": [
-            40,
-            60
+            0,
+            120
         ],
-        "nam": "@pj",
-        "def": "pj=pj_parm",
-        "txt": "pj = pj_parm",
-        "val": "",
-        "vis": true,
-        "lt": "PyLabel",
-        "ht": 12,
-        "al": "Left",
-        "or": "R0",
-        "use": "Normal",
+        "nam": "m",
+        "pd": "Inout",
+        "pt": "Signal",
         "loc": [
-            40.0,
-            60.0
+            0.0,
+            -120.0
         ],
+        "ang": 0.0,
         "fl": [
-            1,
-            1
+            1.0,
+            1.0
         ]
     },
     {
         "type": "attr",
-        "nam": "XyceSymbolNetlistLine",
+        "nam": "SpiceNetlistLine",
         "def": "%spicePrefix@instName %pinOrder %model area=@area  pj=@pj m=@m"
     },
     {

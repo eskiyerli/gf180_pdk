@@ -33,7 +33,6 @@ class baseInst:
 class dnwpw(baseInst):
     def __init__(self, labels_dict: dict):
         super().__init__(labels_dict)
-        print(self._labelsDict)
         self.r_w = Quantity(self._labelsDict['@r_w'].labelValue)
         self.r_l = Quantity(self._labelsDict['@r_l'].labelValue)
         self.m = int(self._labelsDict['@m'].labelValue)

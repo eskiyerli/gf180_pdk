@@ -145,6 +145,7 @@ draftPen.setCosmetic(True)
 schematicPinBrush = QBrush(schematicPinLayer.bcolor, schematicPinLayer.bstyle)
 wireBrush = QBrush(wireLayer.bcolor, wireLayer.bstyle)
 selectedWireBrush = QBrush(selectedWireLayer.bcolor, selectedWireLayer.bstyle)
+hilightBrush = QBrush(wireHilightLayer.bcolor, wireHilightLayer.bstyle)
 errorWireBrush = QBrush(wireErrorLayer.bcolor, wireErrorLayer.bstyle)
 selectedSchematicPinBrush = QBrush(
     selectedSchematicPinLayer.bcolor, selectedSchematicPinLayer.bstyle
