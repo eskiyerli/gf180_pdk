@@ -265,18 +265,7 @@ class pmos_3p3(baseInst):
         return Quantity('0.18u').real / self.W.real
 
 
-class pmos_3p3(baseInst):
-    def __init__(self, labels_dict:dict):
-        super().__init__(labels_dict)
-        self.W = Quantity(self._labelsDict['@W'].labelValue)
-        self.L = Quantity(self._labelsDict['@L'].labelValue)
-        self.m = int(self._labelsDict['@m'].labelValue)
-        self.nf = int(self._labelsDict['@nf'].labelValue)
 
-    def ad_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real
 
     def pd_parm(self):
         return 2 * int((self.nf.real + 1) / 2) * (
@@ -338,7 +327,7 @@ class pmoscap_3p3(baseInst):
         self.L = Quantity(self._labelsDict['@L'].labelValue)
         self.m = int(self._labelsDict['@m'].labelValue)
 
-        
+
 class pmoscap_6p0(baseInst):
     def __init__(self, labels_dict:dict):
         super().__init__(labels_dict)
@@ -367,7 +356,7 @@ class rm1(baseInst):
         self.L = Quantity(self._labelsDict['@L'].labelValue)
         self.m = int(self._labelsDict['@m'].labelValue)
 
-        
+
 class vnpn_10x10(baseInst):
     def __init__(self, labels_dict:dict):
         super().__init__(labels_dict)
