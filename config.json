@@ -1,0 +1,23 @@
+{
+  "pdk_name": "defaultPDK",
+  "pdk_version": "1.0.0",
+  "technology": "130nm",
+  "copyright": "Mozilla Public License 2.0 modified with Commons Clause",
+  "menu_items": [
+    {
+      "location": "menuBar",
+      "menu": "Tools",
+      "action": "AI Terminal",
+      "text": "AI Terminal",
+      "module": "aiTerminal",
+      "callback": "toggleAITerminal",
+      "shortcut": "Ctrl+T",
+      "checked": 0,
+      "apply": [
+        "schematicEditor",
+        "symbolEditor",
+        "layoutEditor"
+      ]
+    }
+  ]
+}

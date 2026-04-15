@@ -22,9 +22,10 @@
 #    Licensor: Revolution Semiconductor (Registered in the Netherlands)
 #
 # import revedaEditor.backend.dataDefinitions as ddef
-import revedaEditor.backend.dataDefinitions as ddef
+from PySide6.QtWidgets import (QApplication, )
 from quantiphy import Quantity
-from revedaEditor.backend.pdkPaths import importPDKModule
+
+app = QApplication.instance()
 
 laylyr = importPDKModule("layoutLayers")
 techParams = importPDKModule("gf180_mcu_tech").GF180_MCU_Tech().techParams
@@ -33,5 +34,5 @@ techParams = importPDKModule("gf180_mcu_tech").GF180_MCU_Tech().techParams
 dbu = 1000  # physical distance between two points on the layout editor, 1um/1000=1n
 snapGrid = 50  # 50nm
 majorGrid = 100  # 100nm
-gdsUnit = Quantity("1 um")
+gdsUnit = Quantity("1 nm")
 gdsPrecision = Quantity("1 nm")

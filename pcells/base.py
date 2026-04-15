@@ -1,6 +1,7 @@
-import revedaEditor.common.layoutShapes as lshp
 from PySide6.QtGui import QFont, QFontDatabase
-from revedaEditor.backend.pdkPaths import importPDKModule
+
+import revedaEditor.common.layoutShapes as lshp
+from revedaEditor.backend.pdkLoader import importPDKModule
 
 gf180_mcu_tech = importPDKModule("gf180_mcu_tech")
 laylyr = importPDKModule("layoutLayers")
