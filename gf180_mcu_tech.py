@@ -35,7 +35,6 @@ class GF180_MCU_Tech():
                 key: tuple(int(x.strip()) for x in value.split(','))
                 for key, value in jsData["Layers"].items()
             }
-            print(self._layers)
 
     def name(self):
         return "gf180_mcu"

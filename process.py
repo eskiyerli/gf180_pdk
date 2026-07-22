@@ -12,6 +12,8 @@
 from PySide6.QtWidgets import (QApplication, )
 from quantiphy import Quantity
 
+from revedaEditor.backend.pdkLoader import importPDKModule
+
 app = QApplication.instance()
 
 laylyr = importPDKModule("layoutLayers")

@@ -1,0 +1,31 @@
+{
+    "version": "1.0",
+    "simulators": {
+        "Xyce": {
+            "modelLibraries": [
+                {
+                    "select": true,
+                    "modelPath": "/home/eskiyerli/onedrive_reveda/Projects/design_software/pdks/gf180_pdk/models/sm141064.xyce",
+                    "modelSection": "typical"
+                }
+            ],
+            "includePaths": [
+                [
+                    true,
+                    "/home/eskiyerli/onedrive_reveda/Projects/design_software/pdks/gf180_pdk/models/design.xyce"
+                ]
+            ],
+            "modulePaths": []
+        },
+        "Ngspice": {
+            "modelLibraries": [],
+            "includePaths": [],
+            "modulePaths": []
+        },
+        "VACASK": {
+            "modelLibraries": [],
+            "includePaths": [],
+            "modulePaths": []
+        }
+    }
+}

@@ -44,6 +44,17 @@ wireHilightLayer = ddef.edLayer(
     visible=True,
     selectable=False,
 )
+wireProbeLayer = ddef.edLayer(
+    name="wireProbeLayer",
+    pcolor=QColor("orange"),
+    pwidth=5,
+    pstyle=Qt.DashLine,
+    z=6,
+    bcolor=QColor("orange"),
+    bstyle=Qt.SolidPattern,
+    visible=True,
+    selectable=False,
+)
 guideLineLayer = replace(
     wireLayer, name="guideLine", pcolor=QColor("gray"), pstyle=Qt.DashLine, z=7
 )
@@ -125,6 +136,21 @@ ignoreSymbolPen = QPen(
 hilightPen = QPen(
     wireHilightLayer.pcolor, wireHilightLayer.pwidth, wireHilightLayer.pstyle
 )
+probePens = []
+_probeColors = [
+    QColor("orange"),
+    QColor("cyan"),
+    QColor("lime"),
+    QColor("magenta"),
+    QColor("yellow"),
+    QColor("red"),
+    QColor("deepskyblue"),
+    QColor("hotpink"),
+]
+for _c in _probeColors:
+    _p = QPen(_c, wireProbeLayer.pwidth, wireProbeLayer.pstyle)
+    _p.setCosmetic(True)
+    probePens.append(_p)
 otherPen = QPen(otherLayer.pcolor, otherLayer.pwidth, otherLayer.pstyle)
 draftPen = QPen(draftLayer.pcolor, draftLayer.pwidth, draftLayer.pstyle)
 draftPen.setCosmetic(True)
