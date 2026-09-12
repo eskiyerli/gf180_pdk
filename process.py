@@ -21,7 +21,7 @@ techParams = importPDKModule("gf180_mcu_tech").GF180_MCU_Tech().techParams
 
 # common process parameters
 dbu = 1000  # physical distance between two points on the layout editor, 1um/1000=1n
-snapGrid = 50  # 50nm
-majorGrid = 100  # 100nm
+snapGrid = 0.05  # 0.05um (50nm)
+majorGrid = 0.1  # 0.1um (100nm)
 gdsUnit = Quantity("1 nm")
 gdsPrecision = Quantity("1 nm")
