@@ -1,0 +1,750 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+section tt
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters isa=1 bfa=1 rba=1 rea=1 rca=1 rbma=1 cjea=1 cjca=1 is_cor_npn=1 bf_cor_npn=1 rb_cor_npn=1 re_cor_npn=1 rc_cor_npn=1 rbm_cor_npn=1 cjc_cor_npn=1 cje_cor_npn=1 mc_xis_vnpn=0 mc_xbf_vnpn=0 mc_xrb_vnpn=0 mc_xre_vnpn=0 mc_xrc_vnpn=0 mc_xcje_vnpn=0 mc_xcjc_vnpn=0 mc_xis_vpnp=0 mc_xbf_vpnp=0 mc_xrb_vpnp=0 mc_xre_vpnp=0 mc_xrc_vpnp=0 mc_xcje_vpnp=0 mc_xcjc_vpnp=0
+// .lib sm141064.ngspice bjt_mc
+
+subckt vpnp_0p42x10(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_0p42x10=agauss(0,0.0015,1) mis_bf_vpnp_0p42x10=agauss(0,0.01088,1) isa_mis_vpnp_0p42x10=mis_is_vpnp_0p42x10*sw_stat_mismatch/sqrt(par) bf_mis_vpnp_0p42x10=mis_bf_vpnp_0p42x10*sw_stat_mismatch/sqrt(par)
+
+q0 (c b e) vpnp_0p42x10  dtemp=dtemp $mfactor=m
+model vpnp_0p42x10 sp_bjt ( 
+  type=-1 
+  tref=25 cjc=2.04e-014*cjca*(1+mc_xcjc_vpnp*sw_stat_global)
+  cje=6.88e-015*cjea*(1+mc_xcje_vpnp*sw_stat_global) cjs=0 fc=0.5 mjc=0.22711
+  mje=0.14469 mjs=0.5 vjc=0.43905 vje=0.43905 vjs=0.75 xcjc=1 itf=0.1 ptf=0
+  tf=1e-010 tr=0 vtf=10 xtf=1 af=1 kf=0
+  is=9e-019*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+isa_mis_vpnp_0p42x10)
+  rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  re=1*rea*(1+mc_xre_vpnp*sw_stat_global) irb=0.1
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global) rbm=10*rbma
+  bf=1.69*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+bf_mis_vpnp_0p42x10) nf=1 vaf=80
+  ikf=0.00063375 ise=2.7e-016 ne=1.64 br=0.0036 nr=1 var=23 ikr=0.1 nkf=0.4
+  isc=1e-018 nc=2 xtb=0.0001 xti=3 eg=1.17 ctc=0.0028626 cte=0.001 tlevc=1
+  tvjc=0.0024779 tvje=0.0019314 tbf1=0.0061 tikf1=-0.0043 tbf2=-4.235165e-022
+)
+
+ends
+
+subckt vpnp_0p42x5(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_0p42x5=agauss(0,0.0017,1) mis_bf_vpnp_0p42x5=agauss(0,0.0119,1)
+q0 (c b e) vpnp_0p42x5  dtemp=dtemp $mfactor=m
+model vpnp_0p42x5 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=4.388e-19*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_0p42x5*sw_stat_mismatch/sqrt(par))
+  bf=1.681*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_0p42x5*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=180 ikf=2.4777e-4 nkf=0.4 ise=1.2124e-16 ne=1.64 br=1.9872e-3 nr=1
+  var=23 ikr=0.1 isc=1e-16 nc=2 rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global) irb=0.1
+  rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=3.5e-15*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.15395
+  cjc=1.17e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.22711 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=6.1e-3 tbf2=-4.235165e-22 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+
+subckt vpnp_10x10(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_10x10=agauss(0,0.00077,1) mis_bf_vpnp_10x10=agauss(0,0.0013,1)
+q0 (c b e) vpnp_10x10  dtemp=dtemp $mfactor=m
+model vpnp_10x10 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=1.249175e-17*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_10x10*sw_stat_mismatch/sqrt(par))
+  bf=1.7*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_10x10*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=206.4 ikf=2.610625e-3 nkf=0.4 ise=2.7e-16 ne=1.64 br=0.017038 nr=1
+  var=23 ikr=0.1 isc=1e-18 nc=2 rb=27.88*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  irb=0.1 rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=9.71e-14*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.24192
+  cjc=4.69e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.24528 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=4.26e-3 tbf2=-1.4e-6 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+subckt vpnp_5x5(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_5x5=agauss(0,0.00052,1) mis_bf_vpnp_5x5=agauss(0,0.0031,1)
+
+q0 (c b e) vpnp_5x5  dtemp=dtemp $mfactor=m
+model vpnp_5x5 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=3.403e-18*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_5x5*sw_stat_mismatch/sqrt(par))
+  bf=1.65*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_5x5*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=208.8 ikf=1.025275e-3 nkf=0.4 ise=2.7e-16 ne=1.64 br=8.372e-3 nr=1
+  var=27.37 ikr=0.1 isc=1e-18 nc=2 rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  irb=0.1 rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=2.57e-14*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.23266
+  cjc=2.15e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.22711 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=4.54e-3 tbf2=-9e-7 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+subckt vnpn_10x10(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_10x10  dtemp=dtemp $mfactor=m
+model vnpn_10x10 sp_bjt ( 
+  type=1 
+  tref=25 cjc=7.053e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.031e-13*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=1.135e-13
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=1.8108e-017*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=65.442*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=6.9007*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=10.146*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=10.83*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=95.696
+  ikf=0.021028 ise=2.9626e-016 ne=1.345 br=0.258 nr=1.002 var=29.681
+  ikr=0.0038951 nkf=0.584 isc=1.5816e-016 nc=1.284 iss=6.32e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5e-005 tnr1=0.0001584 tne1=0.00047174 tbf1=0.00484 tbr1=0.0003808
+  tikf1=-0.0053169 tre1=0.002 tbf2=3.705e-006
+)
+
+ends
+
+subckt vnpn_5x5(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_5x5  dtemp=dtemp $mfactor=m
+model vnpn_5x5 sp_bjt ( 
+  type=1 
+  tref=25 cjc=2.972e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=2.733e-14*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=6.618e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=5.1456e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=71.419*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=12.809*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=12.655*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=10.05*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=77.796
+  ikf=0.01158 ise=2.5923e-016 ne=1.4224 br=0.16573 nr=1 var=28.001 ikr=0.0038951
+  nkf=0.584 isc=1.2536e-016 nc=1.284 iss=3.26e-16 xtb=0 xti=3 eg=1.17 tnf1=6e-005
+  tnr1=0.0001071 tne1=0.0005 tbf1=0.0050844 tbr1=0.00045 tikf1=-0.005 tre1=0.001
+  tbf2=4.3586e-006
+)
+ends
+
+subckt vnpn_0p54x16(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x16  dtemp=dtemp $mfactor=m
+model vnpn_0p54x16 sp_bjt ( 
+  type=1 
+  tref=25 cjc=3.540e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.354e-14*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=8.211e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=2.8872e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=137.43*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=14.121*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=12.9*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.4987*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=37.389
+  ikf=0.013121 ise=5.2003e-016 ne=1.4678 br=0.079582 nr=1 var=23.969
+  ikr=0.0038951 nkf=0.584 isc=1.0425e-016 nc=1.284 iss=3.95e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5.2528e-005 tnr1=0.0001 tne1=0.00034324 tbf1=0.0057737
+  tbr1=0.0007104 tikf1=-0.003 tre1=0.0035596 tbf2=2.2189e-006
+)
+ends
+
+subckt vnpn_0p54x8(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_0p54x8  dtemp=dtemp $mfactor=m
+
+model vnpn_0p54x8 sp_bjt ( 
+  type=1 
+  tref=25 cjc=2.064e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=6.857e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=5.703e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=1.4309e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=141.94*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=14.573*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=13.434*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.4*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.001 vaf=37.389
+  ikf=0.0077487 ise=2.6232e-016 ne=1.4685 br=0.069974 nr=0.996 var=25.201
+  ikr=0.0038951 nkf=0.584 isc=7.3712e-017 nc=1.284 iss=2.62e-16 xtb=0 xti=3
+  eg=1.17 tnf1=4.56e-005 tnr1=0.0001 tne1=0.00065 tbf1=0.0050727 tbr1=0.00085272
+  tikf1=-0.003 tre1=0.00336 tbf2=7.3496e-006
+)
+ends
+
+subckt vnpn_0p54x4(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x4  dtemp=dtemp $mfactor=m
+model vnpn_0p54x4 sp_bjt ( 
+  type=1 
+  tref=25 cjc=1.326e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=3.513e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=4.449e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=7.6696e-019*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=167*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=17.058*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=14.542*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.39*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.001 vaf=37.389
+  ikf=0.0048817 ise=1.3419e-016 ne=1.4801 br=0.057751 nr=0.998 var=25.201
+  ikr=0.0038951 nkf=0.584 isc=6.2655e-017 nc=1.284 iss=1.95e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5e-005 tnr1=0.0001 tne1=0.0004 tbf1=0.0058206 tbr1=0.0009
+  tbf2=-6.2e-007
+)
+ends
+subckt vnpn_0p54x2(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x2  dtemp=dtemp $mfactor=m
+model vnpn_0p54x2 sp_bjt ( 
+  type=1 
+  tref=25 cjc=9.569e-15*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.841e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=3.822e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=4.5765e-019*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=231.74*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=25.055*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=17.312*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.25*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.004 vaf=37.389
+  ikf=0.0039054 ise=8e-017 ne=1.49 br=0.043698 nr=1.0005 var=25.201 ikr=0.0038951
+  nkf=0.584 isc=6.2655e-017 nc=1.284 iss=1.61e-16 xtb=0 xti=3 eg=1.17 tnf1=5e-005
+  tnr1=0.0001 tne1=0.0005 tbf1=0.005536 tbr1=0.001 tbf2=-1.5876e-006
+)
+ends
+
+endsection
+
+section ss
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters isa=0.65 bfa=0.80 rba=1.2 rea=1.2 rca=1.2 rbma=1.2 cjea=1.15 cjca=1.15 is_cor_npn=0.4 bf_cor_npn=0.57 rb_cor_npn=1.2 re_cor_npn=1.2 rc_cor_npn=1.2 rbm_cor_npn=1.2 cjc_cor_npn=1.15 cje_cor_npn=1.15 mc_xis_vnpn=0 mc_xbf_vnpn=0 mc_xrb_vnpn=0 mc_xre_vnpn=0 mc_xrc_vnpn=0 mc_xcje_vnpn=0 mc_xcjc_vnpn=0 mc_xis_vpnp=0 mc_xbf_vpnp=0 mc_xrb_vpnp=0 mc_xre_vpnp=0 mc_xrc_vpnp=0 mc_xcje_vpnp=0 mc_xcjc_vpnp=0
+// .lib sm141064.ngspice bjt_mc
+
+subckt vpnp_0p42x10(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_0p42x10=agauss(0,0.0015,1) mis_bf_vpnp_0p42x10=agauss(0,0.01088,1) isa_mis_vpnp_0p42x10=mis_is_vpnp_0p42x10*sw_stat_mismatch/sqrt(par) bf_mis_vpnp_0p42x10=mis_bf_vpnp_0p42x10*sw_stat_mismatch/sqrt(par)
+
+q0 (c b e) vpnp_0p42x10  dtemp=dtemp $mfactor=m
+model vpnp_0p42x10 sp_bjt ( 
+  type=-1 
+  tref=25 cjc=2.04e-014*cjca*(1+mc_xcjc_vpnp*sw_stat_global)
+  cje=6.88e-015*cjea*(1+mc_xcje_vpnp*sw_stat_global) cjs=0 fc=0.5 mjc=0.22711
+  mje=0.14469 mjs=0.5 vjc=0.43905 vje=0.43905 vjs=0.75 xcjc=1 itf=0.1 ptf=0
+  tf=1e-010 tr=0 vtf=10 xtf=1 af=1 kf=0
+  is=9e-019*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+isa_mis_vpnp_0p42x10)
+  rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  re=1*rea*(1+mc_xre_vpnp*sw_stat_global) irb=0.1
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global) rbm=10*rbma
+  bf=1.69*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+bf_mis_vpnp_0p42x10) nf=1 vaf=80
+  ikf=0.00063375 ise=2.7e-016 ne=1.64 br=0.0036 nr=1 var=23 ikr=0.1 nkf=0.4
+  isc=1e-018 nc=2 xtb=0.0001 xti=3 eg=1.17 ctc=0.0028626 cte=0.001 tlevc=1
+  tvjc=0.0024779 tvje=0.0019314 tbf1=0.0061 tikf1=-0.0043 tbf2=-4.235165e-022
+)
+
+ends
+
+subckt vpnp_0p42x5(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_0p42x5=agauss(0,0.0017,1) mis_bf_vpnp_0p42x5=agauss(0,0.0119,1)
+q0 (c b e) vpnp_0p42x5  dtemp=dtemp $mfactor=m
+model vpnp_0p42x5 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=4.388e-19*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_0p42x5*sw_stat_mismatch/sqrt(par))
+  bf=1.681*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_0p42x5*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=180 ikf=2.4777e-4 nkf=0.4 ise=1.2124e-16 ne=1.64 br=1.9872e-3 nr=1
+  var=23 ikr=0.1 isc=1e-16 nc=2 rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global) irb=0.1
+  rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=3.5e-15*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.15395
+  cjc=1.17e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.22711 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=6.1e-3 tbf2=-4.235165e-22 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+
+subckt vpnp_10x10(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_10x10=agauss(0,0.00077,1) mis_bf_vpnp_10x10=agauss(0,0.0013,1)
+q0 (c b e) vpnp_10x10  dtemp=dtemp $mfactor=m
+model vpnp_10x10 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=1.249175e-17*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_10x10*sw_stat_mismatch/sqrt(par))
+  bf=1.7*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_10x10*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=206.4 ikf=2.610625e-3 nkf=0.4 ise=2.7e-16 ne=1.64 br=0.017038 nr=1
+  var=23 ikr=0.1 isc=1e-18 nc=2 rb=27.88*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  irb=0.1 rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=9.71e-14*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.24192
+  cjc=4.69e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.24528 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=4.26e-3 tbf2=-1.4e-6 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+subckt vpnp_5x5(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_5x5=agauss(0,0.00052,1) mis_bf_vpnp_5x5=agauss(0,0.0031,1)
+
+q0 (c b e) vpnp_5x5  dtemp=dtemp $mfactor=m
+model vpnp_5x5 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=3.403e-18*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_5x5*sw_stat_mismatch/sqrt(par))
+  bf=1.65*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_5x5*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=208.8 ikf=1.025275e-3 nkf=0.4 ise=2.7e-16 ne=1.64 br=8.372e-3 nr=1
+  var=27.37 ikr=0.1 isc=1e-18 nc=2 rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  irb=0.1 rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=2.57e-14*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.23266
+  cjc=2.15e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.22711 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=4.54e-3 tbf2=-9e-7 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+subckt vnpn_10x10(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_10x10  dtemp=dtemp $mfactor=m
+model vnpn_10x10 sp_bjt ( 
+  type=1 
+  tref=25 cjc=7.053e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.031e-13*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=1.135e-13
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=1.8108e-017*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=65.442*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=6.9007*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=10.146*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=10.83*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=95.696
+  ikf=0.021028 ise=2.9626e-016 ne=1.345 br=0.258 nr=1.002 var=29.681
+  ikr=0.0038951 nkf=0.584 isc=1.5816e-016 nc=1.284 iss=6.32e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5e-005 tnr1=0.0001584 tne1=0.00047174 tbf1=0.00484 tbr1=0.0003808
+  tikf1=-0.0053169 tre1=0.002 tbf2=3.705e-006
+)
+
+ends
+
+subckt vnpn_5x5(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_5x5  dtemp=dtemp $mfactor=m
+model vnpn_5x5 sp_bjt ( 
+  type=1 
+  tref=25 cjc=2.972e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=2.733e-14*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=6.618e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=5.1456e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=71.419*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=12.809*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=12.655*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=10.05*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=77.796
+  ikf=0.01158 ise=2.5923e-016 ne=1.4224 br=0.16573 nr=1 var=28.001 ikr=0.0038951
+  nkf=0.584 isc=1.2536e-016 nc=1.284 iss=3.26e-16 xtb=0 xti=3 eg=1.17 tnf1=6e-005
+  tnr1=0.0001071 tne1=0.0005 tbf1=0.0050844 tbr1=0.00045 tikf1=-0.005 tre1=0.001
+  tbf2=4.3586e-006
+)
+ends
+
+subckt vnpn_0p54x16(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x16  dtemp=dtemp $mfactor=m
+model vnpn_0p54x16 sp_bjt ( 
+  type=1 
+  tref=25 cjc=3.540e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.354e-14*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=8.211e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=2.8872e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=137.43*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=14.121*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=12.9*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.4987*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=37.389
+  ikf=0.013121 ise=5.2003e-016 ne=1.4678 br=0.079582 nr=1 var=23.969
+  ikr=0.0038951 nkf=0.584 isc=1.0425e-016 nc=1.284 iss=3.95e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5.2528e-005 tnr1=0.0001 tne1=0.00034324 tbf1=0.0057737
+  tbr1=0.0007104 tikf1=-0.003 tre1=0.0035596 tbf2=2.2189e-006
+)
+ends
+
+subckt vnpn_0p54x8(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_0p54x8  dtemp=dtemp $mfactor=m
+
+model vnpn_0p54x8 sp_bjt ( 
+  type=1 
+  tref=25 cjc=2.064e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=6.857e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=5.703e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=1.4309e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=141.94*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=14.573*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=13.434*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.4*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.001 vaf=37.389
+  ikf=0.0077487 ise=2.6232e-016 ne=1.4685 br=0.069974 nr=0.996 var=25.201
+  ikr=0.0038951 nkf=0.584 isc=7.3712e-017 nc=1.284 iss=2.62e-16 xtb=0 xti=3
+  eg=1.17 tnf1=4.56e-005 tnr1=0.0001 tne1=0.00065 tbf1=0.0050727 tbr1=0.00085272
+  tikf1=-0.003 tre1=0.00336 tbf2=7.3496e-006
+)
+ends
+
+subckt vnpn_0p54x4(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x4  dtemp=dtemp $mfactor=m
+model vnpn_0p54x4 sp_bjt ( 
+  type=1 
+  tref=25 cjc=1.326e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=3.513e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=4.449e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=7.6696e-019*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=167*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=17.058*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=14.542*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.39*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.001 vaf=37.389
+  ikf=0.0048817 ise=1.3419e-016 ne=1.4801 br=0.057751 nr=0.998 var=25.201
+  ikr=0.0038951 nkf=0.584 isc=6.2655e-017 nc=1.284 iss=1.95e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5e-005 tnr1=0.0001 tne1=0.0004 tbf1=0.0058206 tbr1=0.0009
+  tbf2=-6.2e-007
+)
+ends
+subckt vnpn_0p54x2(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x2  dtemp=dtemp $mfactor=m
+model vnpn_0p54x2 sp_bjt ( 
+  type=1 
+  tref=25 cjc=9.569e-15*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.841e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=3.822e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=4.5765e-019*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=231.74*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=25.055*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=17.312*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.25*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.004 vaf=37.389
+  ikf=0.0039054 ise=8e-017 ne=1.49 br=0.043698 nr=1.0005 var=25.201 ikr=0.0038951
+  nkf=0.584 isc=6.2655e-017 nc=1.284 iss=1.61e-16 xtb=0 xti=3 eg=1.17 tnf1=5e-005
+  tnr1=0.0001 tne1=0.0005 tbf1=0.005536 tbr1=0.001 tbf2=-1.5876e-006
+)
+ends
+
+endsection
+
+section ff
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters isa=1.35 bfa=1.2 rba=0.8 rea=0.8 rca=0.8 rbma=0.8 cjea=0.85 cjca=0.85 is_cor_npn=2.25 bf_cor_npn=1.31 rb_cor_npn=0.8 re_cor_npn=0.8 rc_cor_npn=0.8 rbm_cor_npn=0.8 cjc_cor_npn=0.85 cje_cor_npn=0.85 mc_xis_vnpn=0 mc_xbf_vnpn=0 mc_xrb_vnpn=0 mc_xre_vnpn=0 mc_xrc_vnpn=0 mc_xcje_vnpn=0 mc_xcjc_vnpn=0 mc_xis_vpnp=0 mc_xbf_vpnp=0 mc_xrb_vpnp=0 mc_xre_vpnp=0 mc_xrc_vpnp=0 mc_xcje_vpnp=0 mc_xcjc_vpnp=0
+// .lib sm141064.ngspice bjt_mc
+
+subckt vpnp_0p42x10(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_0p42x10=agauss(0,0.0015,1) mis_bf_vpnp_0p42x10=agauss(0,0.01088,1) isa_mis_vpnp_0p42x10=mis_is_vpnp_0p42x10*sw_stat_mismatch/sqrt(par) bf_mis_vpnp_0p42x10=mis_bf_vpnp_0p42x10*sw_stat_mismatch/sqrt(par)
+
+q0 (c b e) vpnp_0p42x10  dtemp=dtemp $mfactor=m
+model vpnp_0p42x10 sp_bjt ( 
+  type=-1 
+  tref=25 cjc=2.04e-014*cjca*(1+mc_xcjc_vpnp*sw_stat_global)
+  cje=6.88e-015*cjea*(1+mc_xcje_vpnp*sw_stat_global) cjs=0 fc=0.5 mjc=0.22711
+  mje=0.14469 mjs=0.5 vjc=0.43905 vje=0.43905 vjs=0.75 xcjc=1 itf=0.1 ptf=0
+  tf=1e-010 tr=0 vtf=10 xtf=1 af=1 kf=0
+  is=9e-019*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+isa_mis_vpnp_0p42x10)
+  rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  re=1*rea*(1+mc_xre_vpnp*sw_stat_global) irb=0.1
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global) rbm=10*rbma
+  bf=1.69*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+bf_mis_vpnp_0p42x10) nf=1 vaf=80
+  ikf=0.00063375 ise=2.7e-016 ne=1.64 br=0.0036 nr=1 var=23 ikr=0.1 nkf=0.4
+  isc=1e-018 nc=2 xtb=0.0001 xti=3 eg=1.17 ctc=0.0028626 cte=0.001 tlevc=1
+  tvjc=0.0024779 tvje=0.0019314 tbf1=0.0061 tikf1=-0.0043 tbf2=-4.235165e-022
+)
+
+ends
+
+subckt vpnp_0p42x5(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_0p42x5=agauss(0,0.0017,1) mis_bf_vpnp_0p42x5=agauss(0,0.0119,1)
+q0 (c b e) vpnp_0p42x5  dtemp=dtemp $mfactor=m
+model vpnp_0p42x5 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=4.388e-19*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_0p42x5*sw_stat_mismatch/sqrt(par))
+  bf=1.681*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_0p42x5*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=180 ikf=2.4777e-4 nkf=0.4 ise=1.2124e-16 ne=1.64 br=1.9872e-3 nr=1
+  var=23 ikr=0.1 isc=1e-16 nc=2 rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global) irb=0.1
+  rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=3.5e-15*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.15395
+  cjc=1.17e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.22711 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=6.1e-3 tbf2=-4.235165e-22 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+
+subckt vpnp_10x10(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_10x10=agauss(0,0.00077,1) mis_bf_vpnp_10x10=agauss(0,0.0013,1)
+q0 (c b e) vpnp_10x10  dtemp=dtemp $mfactor=m
+model vpnp_10x10 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=1.249175e-17*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_10x10*sw_stat_mismatch/sqrt(par))
+  bf=1.7*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_10x10*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=206.4 ikf=2.610625e-3 nkf=0.4 ise=2.7e-16 ne=1.64 br=0.017038 nr=1
+  var=23 ikr=0.1 isc=1e-18 nc=2 rb=27.88*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  irb=0.1 rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=9.71e-14*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.24192
+  cjc=4.69e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.24528 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=4.26e-3 tbf2=-1.4e-6 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+subckt vpnp_5x5(c b e)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+parameters mis_is_vpnp_5x5=agauss(0,0.00052,1) mis_bf_vpnp_5x5=agauss(0,0.0031,1)
+
+q0 (c b e) vpnp_5x5  dtemp=dtemp $mfactor=m
+model vpnp_5x5 sp_bjt ( 
+  type=-1 
+  tlevc=1 tref=25
+  is=3.403e-18*isa*(1+mc_xis_vpnp*sw_stat_global)*(1+mis_is_vpnp_5x5*sw_stat_mismatch/sqrt(par))
+  bf=1.65*bfa*(1+mc_xbf_vpnp*sw_stat_global)*(1+mis_bf_vpnp_5x5*sw_stat_mismatch/sqrt(par))
+  nf=1 vaf=208.8 ikf=1.025275e-3 nkf=0.4 ise=2.7e-16 ne=1.64 br=8.372e-3 nr=1
+  var=27.37 ikr=0.1 isc=1e-18 nc=2 rb=41*rba*(1+mc_xrb_vpnp*sw_stat_global)
+  irb=0.1 rbm=10*rbma re=1*rea*(1+mc_xre_vpnp*sw_stat_global)
+  rc=10*rca*(1+mc_xrc_vpnp*sw_stat_global)
+  cje=2.57e-14*cjea*(1+mc_xcje_vpnp*sw_stat_global) vje=0.43905 mje=0.23266
+  cjc=2.15e-14*cjca*(1+mc_xcjc_vpnp*sw_stat_global) vjc=0.43905 mjc=0.22711 cjs=0
+  vjs=0.75 mjs=0.5 tf=1e-10 xtf=1 vtf=10 itf=0.1 xcjc=1 fc=0.5 tr=0 ptf=0
+  xtb=1e-4 xti=3 eg=1.17 tbf1=4.54e-3 tbf2=-9e-7 tikf1=-4.3e-3 cte=1e-3
+  ctc=2.8626e-3 tvje=1.9314e-3 tvjc=2.4779e-3 kf=0 af=1
+)
+ends
+
+subckt vnpn_10x10(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_10x10  dtemp=dtemp $mfactor=m
+model vnpn_10x10 sp_bjt ( 
+  type=1 
+  tref=25 cjc=7.053e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.031e-13*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=1.135e-13
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=1.8108e-017*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=65.442*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=6.9007*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=10.146*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=10.83*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=95.696
+  ikf=0.021028 ise=2.9626e-016 ne=1.345 br=0.258 nr=1.002 var=29.681
+  ikr=0.0038951 nkf=0.584 isc=1.5816e-016 nc=1.284 iss=6.32e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5e-005 tnr1=0.0001584 tne1=0.00047174 tbf1=0.00484 tbr1=0.0003808
+  tikf1=-0.0053169 tre1=0.002 tbf2=3.705e-006
+)
+
+ends
+
+subckt vnpn_5x5(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_5x5  dtemp=dtemp $mfactor=m
+model vnpn_5x5 sp_bjt ( 
+  type=1 
+  tref=25 cjc=2.972e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=2.733e-14*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=6.618e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=5.1456e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=71.419*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=12.809*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=12.655*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=10.05*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=77.796
+  ikf=0.01158 ise=2.5923e-016 ne=1.4224 br=0.16573 nr=1 var=28.001 ikr=0.0038951
+  nkf=0.584 isc=1.2536e-016 nc=1.284 iss=3.26e-16 xtb=0 xti=3 eg=1.17 tnf1=6e-005
+  tnr1=0.0001071 tne1=0.0005 tbf1=0.0050844 tbr1=0.00045 tikf1=-0.005 tre1=0.001
+  tbf2=4.3586e-006
+)
+ends
+
+subckt vnpn_0p54x16(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x16  dtemp=dtemp $mfactor=m
+model vnpn_0p54x16 sp_bjt ( 
+  type=1 
+  tref=25 cjc=3.540e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.354e-14*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=8.211e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=2.8872e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=137.43*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=14.121*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=12.9*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.4987*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.002 vaf=37.389
+  ikf=0.013121 ise=5.2003e-016 ne=1.4678 br=0.079582 nr=1 var=23.969
+  ikr=0.0038951 nkf=0.584 isc=1.0425e-016 nc=1.284 iss=3.95e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5.2528e-005 tnr1=0.0001 tne1=0.00034324 tbf1=0.0057737
+  tbr1=0.0007104 tikf1=-0.003 tre1=0.0035596 tbf2=2.2189e-006
+)
+ends
+
+subckt vnpn_0p54x8(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+q0 (c b e s) vnpn_0p54x8  dtemp=dtemp $mfactor=m
+
+model vnpn_0p54x8 sp_bjt ( 
+  type=1 
+  tref=25 cjc=2.064e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=6.857e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=5.703e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=1.4309e-018*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=141.94*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=14.573*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=13.434*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.4*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.001 vaf=37.389
+  ikf=0.0077487 ise=2.6232e-016 ne=1.4685 br=0.069974 nr=0.996 var=25.201
+  ikr=0.0038951 nkf=0.584 isc=7.3712e-017 nc=1.284 iss=2.62e-16 xtb=0 xti=3
+  eg=1.17 tnf1=4.56e-005 tnr1=0.0001 tne1=0.00065 tbf1=0.0050727 tbr1=0.00085272
+  tikf1=-0.003 tre1=0.00336 tbf2=7.3496e-006
+)
+ends
+
+subckt vnpn_0p54x4(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x4  dtemp=dtemp $mfactor=m
+model vnpn_0p54x4 sp_bjt ( 
+  type=1 
+  tref=25 cjc=1.326e-14*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=3.513e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=4.449e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=7.6696e-019*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=167*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=17.058*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=14.542*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.39*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.001 vaf=37.389
+  ikf=0.0048817 ise=1.3419e-016 ne=1.4801 br=0.057751 nr=0.998 var=25.201
+  ikr=0.0038951 nkf=0.584 isc=6.2655e-017 nc=1.284 iss=1.95e-16 xtb=0 xti=3
+  eg=1.17 tnf1=5e-005 tnr1=0.0001 tne1=0.0004 tbf1=0.0058206 tbr1=0.0009
+  tbf2=-6.2e-007
+)
+ends
+subckt vnpn_0p54x2(c b e s)
+parameters m=1
+parameters par=1
+parameters dtemp=0
+
+
+q0 (c b e s) vnpn_0p54x2  dtemp=dtemp $mfactor=m
+model vnpn_0p54x2 sp_bjt ( 
+  type=1 
+  tref=25 cjc=9.569e-15*cjc_cor_npn*(1+mc_xcjc_vnpn*sw_stat_global)
+  cje=1.841e-15*cje_cor_npn*(1+mc_xcje_vnpn*sw_stat_global) cjs=3.822e-14
+  mjc=0.31113 mje=0.32071 mjs=0.14716 vjc=0.63391 vje=0.70172 vjs=0.35175 xcjc=1
+  af=1 kf=0 is=4.5765e-019*is_cor_npn*(1+mc_xis_vnpn*sw_stat_global) subs=1
+  rb=231.74*rb_cor_npn*(1+mc_xrb_vnpn*sw_stat_global)
+  re=25.055*re_cor_npn*(1+mc_xre_vnpn*sw_stat_global) irb=0.00045303
+  rc=17.312*rc_cor_npn*(1+mc_xrc_vnpn*sw_stat_global) rbm=1*rbm_cor_npn
+  bf=8.25*bf_cor_npn*(1+mc_xbf_vnpn*sw_stat_global) nf=1.004 vaf=37.389
+  ikf=0.0039054 ise=8e-017 ne=1.49 br=0.043698 nr=1.0005 var=25.201 ikr=0.0038951
+  nkf=0.584 isc=6.2655e-017 nc=1.284 iss=1.61e-16 xtb=0 xti=3 eg=1.17 tnf1=5e-005
+  tnr1=0.0001 tne1=0.0005 tbf1=0.005536 tbr1=0.001 tbf2=-1.5876e-006
+)
+ends
+
+endsection
+

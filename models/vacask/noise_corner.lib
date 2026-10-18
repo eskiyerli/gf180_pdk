@@ -1,0 +1,7 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+ parameters nmos_3p3_noia=(fnoicor==0)*3.2e+041+(fnoicor==1)*3.5e+042 nmos_3p3_noib=(fnoicor==0)*1.2e+020+(fnoicor==1)*1.2e+020 nmos_3p3_noic=(fnoicor==0)*6.0e+008+(fnoicor==1)*6.0e+008 pmos_3p3_noia=(fnoicor==0)*3.2e+041+(fnoicor==1)*4.0e+042 pmos_3p3_noib=(fnoicor==0)*1.8e+020+(fnoicor==1)*1.8e+020 pmos_3p3_noic=(fnoicor==0)*3.0e+009+(fnoicor==1)*6.0e+009 nmos_6p0_noia=(fnoicor==0)*1.998e+041+(fnoicor==1)*8e+041 nmos_6p0_noib=(fnoicor==0)*1e+025+(fnoicor==1)*4e+025 nmos_6p0_noic=(fnoicor==0)*5e+008+(fnoicor==1)*2e+009 pmos_6p0_noia=(fnoicor==0)*6e+040+(fnoicor==1)*2e+043 pmos_6p0_noib=(fnoicor==0)*1.5945e+025+(fnoicor==1)*1.5945e+025 pmos_6p0_noic=(fnoicor==0)*1.0499e+009+(fnoicor==1)*1.0499e+009 nmos_6p0_nat_noia=(fnoicor==0)*5.5e+040+(fnoicor==1)*1e+041 nmos_6p0_nat_noib=(fnoicor==0)*2.5e+025+(fnoicor==1)*9.5e+025 nmos_6p0_nat_noic=(fnoicor==0)*1e+007+(fnoicor==1)*2e+007
+

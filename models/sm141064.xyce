@@ -39201,7 +39201,7 @@ R_leak 1 2 R='1/(gleak*c_AREA)' TC1={c_tc1} TC2={c_tc2}
 .PARAM CVAR2=0.00198
 .PARAM CVAR3=6.25
 .PARAM CVAR4=-3.9375
-C_moscap 1 2 C='nmoscap_3p3_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='nmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS nmoscap_3p3
 *
 .SUBCKT pmoscap_3p3 1 2 PARAMS: C_LENGTH={l} C_WIDTH={w} DTEMP=0
@@ -39209,7 +39209,7 @@ C_moscap 1 2 C='nmoscap_3p3_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .PARAM CVAR2=0.00196
 .PARAM CVAR3=-6.25
 .PARAM CVAR4=-4.9375
-C_moscap 1 2 C='pmoscap_3p3_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='pmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS pmoscap_3p3
 *
 .SUBCKT nmoscap_6p0 1 2 PARAMS: C_LENGTH={l} C_WIDTH={w} DTEMP=0
@@ -39217,7 +39217,7 @@ C_moscap 1 2 C='pmoscap_3p3_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .PARAM CVAR2=0.00107
 .PARAM CVAR3=6.25
 .PARAM CVAR4=-4.1875
-C_moscap 1 2 C='nmoscap_6p0_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='nmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS nmoscap_6p0
 *
 .SUBCKT pmoscap_6p0 1 2 PARAMS: C_LENGTH={l} C_WIDTH={w} DTEMP=0
@@ -39225,7 +39225,7 @@ C_moscap 1 2 C='nmoscap_6p0_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .PARAM CVAR2=0.00107
 .PARAM CVAR3=-6.25
 .PARAM CVAR4=-5.75
-C_moscap 1 2 C='pmoscap_6p0_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='pmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS pmoscap_6p0
 *
 .SUBCKT nmoscap_3p3_b 1 2 PARAMS: C_LENGTH={l} C_WIDTH={w} DTEMP=0
@@ -39233,7 +39233,7 @@ C_moscap 1 2 C='pmoscap_6p0_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .PARAM CVAR2=0.001533
 .PARAM CVAR3=1.515152
 .PARAM CVAR4=0.560606
-C_moscap 1 2 C='nmoscap_3p3_b_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='nmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS nmoscap_3p3_b
 *
 .SUBCKT pmoscap_3p3_b 1 2 PARAMS: C_LENGTH={l} C_WIDTH={w} DTEMP=0
@@ -39241,7 +39241,7 @@ C_moscap 1 2 C='nmoscap_3p3_b_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .PARAM CVAR2=0.00154
 .PARAM CVAR3=-1.66667
 .PARAM CVAR4=0.65
-C_moscap 1 2 C='pmoscap_3p3_b_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='pmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS pmoscap_3p3_b
 *
 .SUBCKT nmoscap_6p0_b 1 2 PARAMS: C_LENGTH={l} C_WIDTH={w} DTEMP=0
@@ -39249,7 +39249,7 @@ C_moscap 1 2 C='pmoscap_3p3_b_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .PARAM CVAR2=0.000863
 .PARAM CVAR3=1.052632
 .PARAM CVAR4=0.736842
-C_moscap 1 2 C='nmoscap_6p0_b_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='nmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS nmoscap_6p0_b
 *
 .SUBCKT pmoscap_6p0_b 1 2 PARAMS: C_LENGTH={l} C_WIDTH={w} DTEMP=0
@@ -39257,7 +39257,7 @@ C_moscap 1 2 C='nmoscap_6p0_b_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .PARAM CVAR2=0.000865
 .PARAM CVAR3=-1.42857
 .PARAM CVAR4=0.642857
-C_moscap 1 2 C='pmoscap_6p0_b_corner*l*w*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
+C_moscap 1 2 C='pmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4))'
 .ENDS pmoscap_6p0_b
 *
 .ENDL moscap

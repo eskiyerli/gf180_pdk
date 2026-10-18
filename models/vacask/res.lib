@@ -1,0 +1,3606 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+section tt
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters rsh_nplus_u=60 rsh_pplus_u=185 rsh_nplus_s=6.3 rsh_pplus_s=7 rsh_nwell=1000 rsh_npolyf_u=310 rsh_ppolyf_u=350 rsh_npolyf_s=6.8 rsh_ppolyf_s=7.3 rsh_ppolyf_u_1k=1000 rsh_ppolyf_u_2k=2000 rsh_ppolyf_u_1k_6p0=1000 rsh_ppolyf_u_2k_6p0=2000 rsh_ppolyf_u_3k=3000 rsh_rm1=0.09 rsh_rm2=0.09 rsh_rm3=0.09 rsh_tm6k=60e-3 rsh_tm9k=40e-3 rsh_tm11k=40e-3 rsh_tm30k=9.5e-3
+//*
+// .lib sm141064.ngspice res
+//* model for unsalicided n+ diffusion resistor
+subckt nplus_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nplus_u*(1+(mc_rsh_nplus_u/(rsh_nplus_u))*res_mc_skew*sw_stat_global)
+parameters r_dw=-5e-8*(1+mc_dw_nplus_u*res_mc_skew*sw_stat_global)
+parameters r_dl=2e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=1.36e-3
+parameters r_tc2=6.5e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+//* model for terminal resistor
+model nplus_u_t sp_resistor ( 
+  rsh=18.5+mc_rt_nplus_u*res_mc_skew*sw_stat_global tc1=8.5e-4 tc2=1.75e-6
+  tnom=25
+)
+//* model for substrate capacitor
+model np_3p3 sp_diode ( 
+  cj=0.00096797 mj=0.32071 pb=0.70172 cjsw=1.5663e-010 mjsw=0.1 php=0.8062
+  cta=0.0009438 ctp=0.00060474 tpb=0.0018129 tphp=5e-005 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)))
+)
+//* terminal 2
+rt2 (21 2) nplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for unsalicided p+ diffusion resistor
+subckt pplus_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_pplus_u*(1+mc_rsh_pplus_u/(rsh_pplus_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=2.75e-8*(1+mc_dw_pplus_u*res_mc_skew*sw_stat_global)
+parameters r_dl=5.0e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=1.375e-3
+parameters r_tc2=1e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+//* model for terminal resistor
+model pplus_u_t sp_resistor ( 
+  rsh=50+mc_rt_pplus_u*res_mc_skew*sw_stat_global tc1=-1.528e-3 tc2=0.7e-6
+  tnom=25
+)
+//* model for substrate capacitor
+model pn_3p3 sp_diode ( 
+  cj=0.00094344 mj=0.32084 pb=0.69939 cjsw=1.5078e-010 mjsw=0.05 php=0.8022
+  cta=0.00099187 ctp=0.00063483 tpb=0.0016906 tphp=0.0058423 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) pplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (1 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)))
+)
+//* terminal 2
+rt2 (21 2) pplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (2 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for salicided n+ diffusion resistor
+subckt nplus_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nplus_s*(1+mc_rsh_nplus_s/(rsh_nplus_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=-1.25e-8*(1+mc_dw_nplus_s*res_mc_skew*sw_stat_global)
+parameters r_dl=3.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.3e-3
+parameters r_tc2=3e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model nplus_s_t sp_resistor ( 
+  rsh=6 tc1=1.43e-3 tc2=-0.27e-6 tnom=25
+)
+//* model for substrate capacitor
+model np_3p3 sp_diode ( 
+  cj=0.00096797 mj=0.32071 pb=0.70172 cjsw=1.5663e-010 mjsw=0.1 php=0.8062
+  cta=0.0009438 ctp=0.00060474 tpb=0.0018129 tphp=5e-005 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) nplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for salicided p+ diffusion resistor
+subckt pplus_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_pplus_s*(1+mc_rsh_pplus_s/(rsh_pplus_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=-5e-8*(1+mc_dw_pplus_s*res_mc_skew*sw_stat_global)
+parameters r_dl=3.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.375e-3
+parameters r_tc2=0.45e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model pplus_s_t sp_resistor ( 
+  rsh=6.5 tc1=1.565e-3 tc2=-0.028e-6 tnom=25
+)
+//* model for substrate capacitor
+model pn_3p3 sp_diode ( 
+  cj=0.00094344 mj=0.32084 pb=0.69939 cjsw=1.5078e-010 mjsw=0.05 php=0.8022
+  cta=0.00099187 ctp=0.00063483 tpb=0.0016906 tphp=0.0058423 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) pplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (1 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) pplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (2 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for Nwell resistor under STI 
+subckt nwell(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nwell
+parameters r_dw=2.22e-7
+parameters r_dl=1.02e-8
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=2.285e-3
+parameters r_tc2=9.78e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model nwell_t sp_resistor ( 
+  rsh=250 tc1=1.72e-3 tc2=9.34e-6 tnom=25
+)
+//* model for substrate capacitor
+model nwp sp_diode ( 
+  cj=0.00014917 mj=0.33979 pb=0.5755 cjsw=5.8113e-010 mjsw=0.2257 php=0.55456
+  cta=0.0023998 ctp=0.0010977 tpb=0.0027641 tphp=0.0019629 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nwell_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) nwp  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) nwell_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) nwp  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for n+ poly on field oxide resistor
+subckt npolyf_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_npolyf_u*(1+mc_rsh_npolyf_u/(rsh_npolyf_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=0.0265e-6*(1+mc_dw_npolyf_u*res_mc_skew*sw_stat_global)
+parameters r_dl=8.48e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=-1.4e-3
+parameters r_tc2=2.2e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+model npolyf_u_body sp_resistor ( 
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* model for terminal resistor
+model npolyf_u_t sp_resistor ( 
+  rsh=40+mc_rt_npolyf_u*res_mc_skew*sw_stat_global tc1=-0.735e-3 tc2=-1.7e-6
+  tnom=25 af=1.684 kf=3.6e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) npolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) npolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for P+ poly on field oxide resistor
+subckt ppolyf_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_ppolyf_u*(1+mc_rsh_ppolyf_u/(rsh_ppolyf_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=2.55e-8*(1+mc_dw_ppolyf_u*res_mc_skew*sw_stat_global)
+parameters r_dl=2e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=-0.9e-4
+parameters r_tc2=7e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+model ppolyf_u_body sp_resistor ( 
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_t sp_resistor ( 
+  rsh=60+mc_rt_ppolyf_u*res_mc_skew*sw_stat_global tc1=-1.47e-3 tc2=0.82e-6
+  tnom=25 af=1.79 kf=2.4e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n))*(1+mis_r*sw_stat_mismatch)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for salicided n+ poly over field oxide resistor
+subckt npolyf_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_npolyf_s*(1+mc_rsh_npolyf_s/(rsh_npolyf_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=6.5e-9*(1+mc_dw_npolyf_s*res_mc_skew*sw_stat_global)
+parameters r_dl=1.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.26e-3
+parameters r_tc2=0.25e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model npolyf_s_body sp_resistor ( 
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* model for terminal resistor
+model npolyf_s_t sp_resistor ( 
+  rsh=5.5 tc1=1.28e-3 tc2=-0.5e-6 tnom=25 af=1.684 kf=3.6e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) npolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) npolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for salicided p+ poly over field oxide resistor
+subckt ppolyf_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_ppolyf_s*(1+mc_rsh_ppolyf_s/(rsh_ppolyf_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=7.5e-9*(1+mc_dw_ppolyf_s*res_mc_skew*sw_stat_global)
+parameters r_dl=1.5e-10
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.245e-3
+parameters r_tc2=3.6e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_s_body sp_resistor ( 
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* model for terminal resistor
+model ppolyf_s_t sp_resistor ( 
+  rsh=5 tc1=1.254e-3 tc2=-0.27e-6 tnom=25 af=1.79 kf=2.4e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n))
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for 1k high-Rs P+ poly on field oxide resistor (LV area)
+//*******************************************************************************************************
+subckt ppolyf_u_1k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_1k*(1+mc_rsh_ppolyf_u_1k/(rsh_ppolyf_u_1k)*res_mc_skew*sw_stat_global) r_dw=0.0148e-6*(1+mc_dw_ppolyf_u_1k*res_mc_skew*sw_stat_global) r_dl=3.85e-11 r_vc1=0 r_vc2=0 r_tc1=-9.39e-4 r_tc2=2.51e-6 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_1k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_1k_t sp_resistor ( 
+  rsh=85.45+mc_rt_ppolyf_u_1k*res_mc_skew*sw_stat_global tc1=-7.92e-3 tc2=4.25e-5
+  tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 2k high-rs P+ poly on field oxide resistor (LV area)
+//*******************************************************************************************************
+//* model for 2k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_2k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_2k*(1+mc_rsh_ppolyf_u_2k/(rsh_ppolyf_u_2k)*res_mc_skew*sw_stat_global) r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_2k*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_2k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_2k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_2k*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for 1k high-Rs P+ poly on field oxide resistor (MV area)
+//*******************************************************************************************************
+subckt ppolyf_u_1k_6p0(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_1k_6p0*(1+mc_rsh_ppolyf_u_1k_6p0/(rsh_ppolyf_u_1k_6p0)*res_mc_skew*sw_stat_global) r_dw=0.0148e-6*(1+mc_dw_ppolyf_u_1k_6p0*res_mc_skew*sw_stat_global) r_dl=3.85e-11 r_vc1=0 r_vc2=0 r_tc1=-9.39e-4 r_tc2=2.51e-6 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_1k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_1k_t sp_resistor ( 
+  rsh=85.45+mc_rt_ppolyf_u_1k_6p0*res_mc_skew*sw_stat_global tc1=-7.92e-3
+  tc2=4.25e-5 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 2k high-rs P+ poly on field oxide resistor (MV area)
+//*******************************************************************************************************
+//* model for 2k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_2k_6p0(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_2k_6p0+mc_rsh_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_2k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_2k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 3k high-rs P+ poly on field oxide resistor (LV & MVarea)
+//*******************************************************************************************************
+//* model for 3k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_3k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_3k*(1+mc_rsh_ppolyf_u_3k/(rsh_ppolyf_u_3k)*res_mc_skew*sw_stat_global) r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_3k*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_3k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_3k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_3k*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_3k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_3k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 1 resistor
+subckt rm1(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm1
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 2 resistor
+subckt rm2(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm2
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 3 resistor
+subckt rm3(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm3
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 6k resistor
+subckt tm6k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm6k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.5e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 9k resistor
+subckt tm9k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm9k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.7e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 11k resistor 
+subckt tm11k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm11k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.7e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 30k resistor
+subckt tm30k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters par=1
+parameters s=1
+parameters dtemp=0
+parameters r_rsh0=rsh_tm30k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.86e-3
+parameters r_tc2=1.51e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*rb 1 2 r='r_temp*r_n*r_rsh0' vc1 = 'r_vc1/r_n/r_rsh0' vc2 = 'r_vc2/r_n/r_n/r_rsh0'
+//*-------------------
+ends
+//***************************************************************************************
+//*
+// .lib sm141064.ngspice efuse
+//******************************************************************************
+//*
+//*  A single resistor is used to simulate the resistance.
+//*
+//*                                  Rfuse
+//*                          in  o--/\/\/\/--o  out
+//*
+//*******************************************************************************
+//*
+//*  SYNTAX:
+//*
+//*    Specify fuse as intact (default, pblow=0) or programmed (pblow=1).
+//*
+//*    xxx  in out  efuse (pblow=0)
+//*
+//*  NOTES:
+//*
+//*  1. Model values based on PCELL layout as provided in the design kit. No
+//*     other geometries or layouts are supported.
+//*
+//*  2. Resistance toggles between maximum spec value for intact fuse (<200 ohm)
+//*     and minimum end of life value for programmed fuse (> 900 ohm).
+//*
+//*******************************************************************************
+//*
+subckt efuse(in out)
+parameters m=1
+parameters pblow=0
+//*
+rfuse (in out) gf180_default_mod_r  r=200*(1-pblow)+900*pblow $mfactor=m
+//*
+ends
+
+// .lib sm141064.ngspice res_statistical_par
+parameters mc_rsh_nplus_u=0 mc_rsh_pplus_u=0 mc_rsh_nplus_s=0 mc_rsh_pplus_s=0 mc_rsh_npolyf_u=0 mc_rsh_ppolyf_u=0 mc_rsh_npolyf_s=0 mc_rsh_ppolyf_s=0 mc_rsh_ppolyf_u_1k=0 mc_rsh_ppolyf_u_2k=0 mc_rsh_ppolyf_u_1k_6p0=0 mc_rsh_ppolyf_u_2k_6p0=0 mc_rsh_ppolyf_u_3k=0 mc_dw_nplus_u=0 mc_dw_pplus_u=0 mc_dw_nplus_s=0 mc_dw_pplus_s=0 mc_dw_npolyf_u=0 mc_dw_ppolyf_u=0 mc_dw_npolyf_s=0 mc_dw_ppolyf_s=0 mc_dw_ppolyf_u_1k=0 mc_dw_ppolyf_u_2k=0 mc_dw_ppolyf_u_1k_6p0=0 mc_dw_ppolyf_u_2k_6p0=0 mc_dw_ppolyf_u_3k=0 mc_rt_nplus_u=0 mc_rt_pplus_u=0 mc_rt_npolyf_u=0 mc_rt_ppolyf_u=0 mc_rt_ppolyf_u_1k=0 mc_rt_ppolyf_u_2k=0 mc_rt_ppolyf_u_1k_6p0=0 mc_rt_ppolyf_u_2k_6p0=0 mc_rt_ppolyf_u_3k=0
+
+
+endsection
+
+section ss
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters rsh_nplus_u=75 rsh_pplus_u=225 rsh_nplus_s=15 rsh_pplus_s=15 rsh_nwell=1200 rsh_npolyf_u=370 rsh_ppolyf_u=420 rsh_npolyf_s=15 rsh_ppolyf_s=15 rsh_ppolyf_u_1k=1000+200 rsh_ppolyf_u_2k=2000+400 rsh_ppolyf_u_1k_6p0=1000+200 rsh_ppolyf_u_2k_6p0=2000+400 rsh_ppolyf_u_3k=3000+750 rsh_rm1=0.09+0.012 rsh_rm2=0.09+0.012 rsh_rm3=0.09+0.012 rsh_tm6k=60e-3+10e-3 rsh_tm9k=40e-3+9e-3 rsh_tm11k=40e-3+9e-3 rsh_tm30k=9.5e-3+4.5e-3
+//*
+// .lib sm141064.ngspice res
+//* model for unsalicided n+ diffusion resistor
+subckt nplus_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nplus_u*(1+(mc_rsh_nplus_u/(rsh_nplus_u))*res_mc_skew*sw_stat_global)
+parameters r_dw=-5e-8*(1+mc_dw_nplus_u*res_mc_skew*sw_stat_global)
+parameters r_dl=2e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=1.36e-3
+parameters r_tc2=6.5e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+//* model for terminal resistor
+model nplus_u_t sp_resistor ( 
+  rsh=18.5+mc_rt_nplus_u*res_mc_skew*sw_stat_global tc1=8.5e-4 tc2=1.75e-6
+  tnom=25
+)
+//* model for substrate capacitor
+model np_3p3 sp_diode ( 
+  cj=0.00096797 mj=0.32071 pb=0.70172 cjsw=1.5663e-010 mjsw=0.1 php=0.8062
+  cta=0.0009438 ctp=0.00060474 tpb=0.0018129 tphp=5e-005 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)))
+)
+//* terminal 2
+rt2 (21 2) nplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for unsalicided p+ diffusion resistor
+subckt pplus_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_pplus_u*(1+mc_rsh_pplus_u/(rsh_pplus_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=2.75e-8*(1+mc_dw_pplus_u*res_mc_skew*sw_stat_global)
+parameters r_dl=5.0e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=1.375e-3
+parameters r_tc2=1e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+//* model for terminal resistor
+model pplus_u_t sp_resistor ( 
+  rsh=50+mc_rt_pplus_u*res_mc_skew*sw_stat_global tc1=-1.528e-3 tc2=0.7e-6
+  tnom=25
+)
+//* model for substrate capacitor
+model pn_3p3 sp_diode ( 
+  cj=0.00094344 mj=0.32084 pb=0.69939 cjsw=1.5078e-010 mjsw=0.05 php=0.8022
+  cta=0.00099187 ctp=0.00063483 tpb=0.0016906 tphp=0.0058423 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) pplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (1 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)))
+)
+//* terminal 2
+rt2 (21 2) pplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (2 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for salicided n+ diffusion resistor
+subckt nplus_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nplus_s*(1+mc_rsh_nplus_s/(rsh_nplus_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=-1.25e-8*(1+mc_dw_nplus_s*res_mc_skew*sw_stat_global)
+parameters r_dl=3.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.3e-3
+parameters r_tc2=3e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model nplus_s_t sp_resistor ( 
+  rsh=6 tc1=1.43e-3 tc2=-0.27e-6 tnom=25
+)
+//* model for substrate capacitor
+model np_3p3 sp_diode ( 
+  cj=0.00096797 mj=0.32071 pb=0.70172 cjsw=1.5663e-010 mjsw=0.1 php=0.8062
+  cta=0.0009438 ctp=0.00060474 tpb=0.0018129 tphp=5e-005 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) nplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for salicided p+ diffusion resistor
+subckt pplus_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_pplus_s*(1+mc_rsh_pplus_s/(rsh_pplus_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=-5e-8*(1+mc_dw_pplus_s*res_mc_skew*sw_stat_global)
+parameters r_dl=3.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.375e-3
+parameters r_tc2=0.45e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model pplus_s_t sp_resistor ( 
+  rsh=6.5 tc1=1.565e-3 tc2=-0.028e-6 tnom=25
+)
+//* model for substrate capacitor
+model pn_3p3 sp_diode ( 
+  cj=0.00094344 mj=0.32084 pb=0.69939 cjsw=1.5078e-010 mjsw=0.05 php=0.8022
+  cta=0.00099187 ctp=0.00063483 tpb=0.0016906 tphp=0.0058423 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) pplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (1 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) pplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (2 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for Nwell resistor under STI 
+subckt nwell(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nwell
+parameters r_dw=2.22e-7
+parameters r_dl=1.02e-8
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=2.285e-3
+parameters r_tc2=9.78e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model nwell_t sp_resistor ( 
+  rsh=250 tc1=1.72e-3 tc2=9.34e-6 tnom=25
+)
+//* model for substrate capacitor
+model nwp sp_diode ( 
+  cj=0.00014917 mj=0.33979 pb=0.5755 cjsw=5.8113e-010 mjsw=0.2257 php=0.55456
+  cta=0.0023998 ctp=0.0010977 tpb=0.0027641 tphp=0.0019629 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nwell_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) nwp  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) nwell_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) nwp  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for n+ poly on field oxide resistor
+subckt npolyf_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_npolyf_u*(1+mc_rsh_npolyf_u/(rsh_npolyf_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=0.0265e-6*(1+mc_dw_npolyf_u*res_mc_skew*sw_stat_global)
+parameters r_dl=8.48e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=-1.4e-3
+parameters r_tc2=2.2e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+model npolyf_u_body sp_resistor ( 
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* model for terminal resistor
+model npolyf_u_t sp_resistor ( 
+  rsh=40+mc_rt_npolyf_u*res_mc_skew*sw_stat_global tc1=-0.735e-3 tc2=-1.7e-6
+  tnom=25 af=1.684 kf=3.6e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) npolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) npolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for P+ poly on field oxide resistor
+subckt ppolyf_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_ppolyf_u*(1+mc_rsh_ppolyf_u/(rsh_ppolyf_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=2.55e-8*(1+mc_dw_ppolyf_u*res_mc_skew*sw_stat_global)
+parameters r_dl=2e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=-0.9e-4
+parameters r_tc2=7e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+model ppolyf_u_body sp_resistor ( 
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_t sp_resistor ( 
+  rsh=60+mc_rt_ppolyf_u*res_mc_skew*sw_stat_global tc1=-1.47e-3 tc2=0.82e-6
+  tnom=25 af=1.79 kf=2.4e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n))*(1+mis_r*sw_stat_mismatch)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for salicided n+ poly over field oxide resistor
+subckt npolyf_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_npolyf_s*(1+mc_rsh_npolyf_s/(rsh_npolyf_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=6.5e-9*(1+mc_dw_npolyf_s*res_mc_skew*sw_stat_global)
+parameters r_dl=1.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.26e-3
+parameters r_tc2=0.25e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model npolyf_s_body sp_resistor ( 
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* model for terminal resistor
+model npolyf_s_t sp_resistor ( 
+  rsh=5.5 tc1=1.28e-3 tc2=-0.5e-6 tnom=25 af=1.684 kf=3.6e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) npolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) npolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for salicided p+ poly over field oxide resistor
+subckt ppolyf_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_ppolyf_s*(1+mc_rsh_ppolyf_s/(rsh_ppolyf_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=7.5e-9*(1+mc_dw_ppolyf_s*res_mc_skew*sw_stat_global)
+parameters r_dl=1.5e-10
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.245e-3
+parameters r_tc2=3.6e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_s_body sp_resistor ( 
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* model for terminal resistor
+model ppolyf_s_t sp_resistor ( 
+  rsh=5 tc1=1.254e-3 tc2=-0.27e-6 tnom=25 af=1.79 kf=2.4e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n))
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for 1k high-Rs P+ poly on field oxide resistor (LV area)
+//*******************************************************************************************************
+subckt ppolyf_u_1k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_1k*(1+mc_rsh_ppolyf_u_1k/(rsh_ppolyf_u_1k)*res_mc_skew*sw_stat_global) r_dw=0.0148e-6*(1+mc_dw_ppolyf_u_1k*res_mc_skew*sw_stat_global) r_dl=3.85e-11 r_vc1=0 r_vc2=0 r_tc1=-9.39e-4 r_tc2=2.51e-6 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_1k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_1k_t sp_resistor ( 
+  rsh=85.45+mc_rt_ppolyf_u_1k*res_mc_skew*sw_stat_global tc1=-7.92e-3 tc2=4.25e-5
+  tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 2k high-rs P+ poly on field oxide resistor (LV area)
+//*******************************************************************************************************
+//* model for 2k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_2k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_2k*(1+mc_rsh_ppolyf_u_2k/(rsh_ppolyf_u_2k)*res_mc_skew*sw_stat_global) r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_2k*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_2k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_2k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_2k*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for 1k high-Rs P+ poly on field oxide resistor (MV area)
+//*******************************************************************************************************
+subckt ppolyf_u_1k_6p0(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_1k_6p0*(1+mc_rsh_ppolyf_u_1k_6p0/(rsh_ppolyf_u_1k_6p0)*res_mc_skew*sw_stat_global) r_dw=0.0148e-6*(1+mc_dw_ppolyf_u_1k_6p0*res_mc_skew*sw_stat_global) r_dl=3.85e-11 r_vc1=0 r_vc2=0 r_tc1=-9.39e-4 r_tc2=2.51e-6 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_1k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_1k_t sp_resistor ( 
+  rsh=85.45+mc_rt_ppolyf_u_1k_6p0*res_mc_skew*sw_stat_global tc1=-7.92e-3
+  tc2=4.25e-5 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 2k high-rs P+ poly on field oxide resistor (MV area)
+//*******************************************************************************************************
+//* model for 2k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_2k_6p0(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_2k_6p0+mc_rsh_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_2k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_2k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 3k high-rs P+ poly on field oxide resistor (LV & MVarea)
+//*******************************************************************************************************
+//* model for 3k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_3k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_3k*(1+mc_rsh_ppolyf_u_3k/(rsh_ppolyf_u_3k)*res_mc_skew*sw_stat_global) r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_3k*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_3k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_3k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_3k*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_3k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_3k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 1 resistor
+subckt rm1(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm1
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 2 resistor
+subckt rm2(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm2
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 3 resistor
+subckt rm3(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm3
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 6k resistor
+subckt tm6k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm6k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.5e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 9k resistor
+subckt tm9k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm9k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.7e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 11k resistor 
+subckt tm11k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm11k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.7e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 30k resistor
+subckt tm30k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters par=1
+parameters s=1
+parameters dtemp=0
+parameters r_rsh0=rsh_tm30k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.86e-3
+parameters r_tc2=1.51e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*rb 1 2 r='r_temp*r_n*r_rsh0' vc1 = 'r_vc1/r_n/r_rsh0' vc2 = 'r_vc2/r_n/r_n/r_rsh0'
+//*-------------------
+ends
+//***************************************************************************************
+//*
+// .lib sm141064.ngspice efuse
+//******************************************************************************
+//*
+//*  A single resistor is used to simulate the resistance.
+//*
+//*                                  Rfuse
+//*                          in  o--/\/\/\/--o  out
+//*
+//*******************************************************************************
+//*
+//*  SYNTAX:
+//*
+//*    Specify fuse as intact (default, pblow=0) or programmed (pblow=1).
+//*
+//*    xxx  in out  efuse (pblow=0)
+//*
+//*  NOTES:
+//*
+//*  1. Model values based on PCELL layout as provided in the design kit. No
+//*     other geometries or layouts are supported.
+//*
+//*  2. Resistance toggles between maximum spec value for intact fuse (<200 ohm)
+//*     and minimum end of life value for programmed fuse (> 900 ohm).
+//*
+//*******************************************************************************
+//*
+subckt efuse(in out)
+parameters m=1
+parameters pblow=0
+//*
+rfuse (in out) gf180_default_mod_r  r=200*(1-pblow)+900*pblow $mfactor=m
+//*
+ends
+
+// .lib sm141064.ngspice res_statistical_par
+parameters mc_rsh_nplus_u=0 mc_rsh_pplus_u=0 mc_rsh_nplus_s=0 mc_rsh_pplus_s=0 mc_rsh_npolyf_u=0 mc_rsh_ppolyf_u=0 mc_rsh_npolyf_s=0 mc_rsh_ppolyf_s=0 mc_rsh_ppolyf_u_1k=0 mc_rsh_ppolyf_u_2k=0 mc_rsh_ppolyf_u_1k_6p0=0 mc_rsh_ppolyf_u_2k_6p0=0 mc_rsh_ppolyf_u_3k=0 mc_dw_nplus_u=0 mc_dw_pplus_u=0 mc_dw_nplus_s=0 mc_dw_pplus_s=0 mc_dw_npolyf_u=0 mc_dw_ppolyf_u=0 mc_dw_npolyf_s=0 mc_dw_ppolyf_s=0 mc_dw_ppolyf_u_1k=0 mc_dw_ppolyf_u_2k=0 mc_dw_ppolyf_u_1k_6p0=0 mc_dw_ppolyf_u_2k_6p0=0 mc_dw_ppolyf_u_3k=0 mc_rt_nplus_u=0 mc_rt_pplus_u=0 mc_rt_npolyf_u=0 mc_rt_ppolyf_u=0 mc_rt_ppolyf_u_1k=0 mc_rt_ppolyf_u_2k=0 mc_rt_ppolyf_u_1k_6p0=0 mc_rt_ppolyf_u_2k_6p0=0 mc_rt_ppolyf_u_3k=0
+
+
+endsection
+
+section ff
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters rsh_nplus_u=45 rsh_pplus_u=145 rsh_nplus_s=1 rsh_pplus_s=1 rsh_nwell=800 rsh_npolyf_u=250 rsh_ppolyf_u=280 rsh_npolyf_s=1 rsh_ppolyf_s=1 rsh_ppolyf_u_1k=1000-200 rsh_ppolyf_u_2k=2000-400 rsh_ppolyf_u_1k_6p0=1000-200 rsh_ppolyf_u_2k_6p0=2000-400 rsh_ppolyf_u_3k=3000-750 rsh_rm1=0.09-0.012 rsh_rm2=0.09-0.012 rsh_rm3=0.09-0.012 rsh_tm6k=60e-3-10e-3 rsh_tm9k=40e-3-9e-3 rsh_tm11k=40e-3-9e-3 rsh_tm30k=9.5e-3-3.5e-3
+//*
+// .lib sm141064.ngspice res
+//* model for unsalicided n+ diffusion resistor
+subckt nplus_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nplus_u*(1+(mc_rsh_nplus_u/(rsh_nplus_u))*res_mc_skew*sw_stat_global)
+parameters r_dw=-5e-8*(1+mc_dw_nplus_u*res_mc_skew*sw_stat_global)
+parameters r_dl=2e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=1.36e-3
+parameters r_tc2=6.5e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+//* model for terminal resistor
+model nplus_u_t sp_resistor ( 
+  rsh=18.5+mc_rt_nplus_u*res_mc_skew*sw_stat_global tc1=8.5e-4 tc2=1.75e-6
+  tnom=25
+)
+//* model for substrate capacitor
+model np_3p3 sp_diode ( 
+  cj=0.00096797 mj=0.32071 pb=0.70172 cjsw=1.5663e-010 mjsw=0.1 php=0.8062
+  cta=0.0009438 ctp=0.00060474 tpb=0.0018129 tphp=5e-005 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)))
+)
+//* terminal 2
+rt2 (21 2) nplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for unsalicided p+ diffusion resistor
+subckt pplus_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_pplus_u*(1+mc_rsh_pplus_u/(rsh_pplus_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=2.75e-8*(1+mc_dw_pplus_u*res_mc_skew*sw_stat_global)
+parameters r_dl=5.0e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=1.375e-3
+parameters r_tc2=1e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+//* model for terminal resistor
+model pplus_u_t sp_resistor ( 
+  rsh=50+mc_rt_pplus_u*res_mc_skew*sw_stat_global tc1=-1.528e-3 tc2=0.7e-6
+  tnom=25
+)
+//* model for substrate capacitor
+model pn_3p3 sp_diode ( 
+  cj=0.00094344 mj=0.32084 pb=0.69939 cjsw=1.5078e-010 mjsw=0.05 php=0.8022
+  cta=0.00099187 ctp=0.00063483 tpb=0.0016906 tphp=0.0058423 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) pplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (1 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)))
+)
+//* terminal 2
+rt2 (21 2) pplus_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (2 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for salicided n+ diffusion resistor
+subckt nplus_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nplus_s*(1+mc_rsh_nplus_s/(rsh_nplus_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=-1.25e-8*(1+mc_dw_nplus_s*res_mc_skew*sw_stat_global)
+parameters r_dl=3.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.3e-3
+parameters r_tc2=3e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model nplus_s_t sp_resistor ( 
+  rsh=6 tc1=1.43e-3 tc2=-0.27e-6 tnom=25
+)
+//* model for substrate capacitor
+model np_3p3 sp_diode ( 
+  cj=0.00096797 mj=0.32071 pb=0.70172 cjsw=1.5663e-010 mjsw=0.1 php=0.8062
+  cta=0.0009438 ctp=0.00060474 tpb=0.0018129 tphp=5e-005 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) nplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) np_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for salicided p+ diffusion resistor
+subckt pplus_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_pplus_s*(1+mc_rsh_pplus_s/(rsh_pplus_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=-5e-8*(1+mc_dw_pplus_s*res_mc_skew*sw_stat_global)
+parameters r_dl=3.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.375e-3
+parameters r_tc2=0.45e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model pplus_s_t sp_resistor ( 
+  rsh=6.5 tc1=1.565e-3 tc2=-0.028e-6 tnom=25
+)
+//* model for substrate capacitor
+model pn_3p3 sp_diode ( 
+  cj=0.00094344 mj=0.32084 pb=0.69939 cjsw=1.5078e-010 mjsw=0.05 php=0.8022
+  cta=0.00099187 ctp=0.00063483 tpb=0.0016906 tphp=0.0058423 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) pplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (1 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) pplus_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (2 3) pn_3p3  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for Nwell resistor under STI 
+subckt nwell(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_nwell
+parameters r_dw=2.22e-7
+parameters r_dl=1.02e-8
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=2.285e-3
+parameters r_tc2=9.78e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//* model for terminal resistor
+model nwell_t sp_resistor ( 
+  rsh=250 tc1=1.72e-3 tc2=9.34e-6 tnom=25
+)
+//* model for substrate capacitor
+model nwp sp_diode ( 
+  cj=0.00014917 mj=0.33979 pb=0.5755 cjsw=5.8113e-010 mjsw=0.2257 php=0.55456
+  cta=0.0023998 ctp=0.0010977 tpb=0.0027641 tphp=0.0019629 tlevc=1 tref=25
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) nwell_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d1 (3 1) nwp  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  
+  i=m*(v(11,21)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)))
+)
+//* terminal 2
+rt2 (21 2) nwell_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+d2 (3 2) nwp  area=r_w*r_l/2 pj=r_w+2*r_l/2 dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for n+ poly on field oxide resistor
+subckt npolyf_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_npolyf_u*(1+mc_rsh_npolyf_u/(rsh_npolyf_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=0.0265e-6*(1+mc_dw_npolyf_u*res_mc_skew*sw_stat_global)
+parameters r_dl=8.48e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=-1.4e-3
+parameters r_tc2=2.2e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+model npolyf_u_body sp_resistor ( 
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* model for terminal resistor
+model npolyf_u_t sp_resistor ( 
+  rsh=40+mc_rt_npolyf_u*res_mc_skew*sw_stat_global tc1=-0.735e-3 tc2=-1.7e-6
+  tnom=25 af=1.684 kf=3.6e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) npolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)*(1+mis_r*sw_stat_mismatch)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) npolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for P+ poly on field oxide resistor
+subckt ppolyf_u(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_ppolyf_u*(1+mc_rsh_ppolyf_u/(rsh_ppolyf_u)*res_mc_skew*sw_stat_global)
+parameters r_dw=2.55e-8*(1+mc_dw_ppolyf_u*res_mc_skew*sw_stat_global)
+parameters r_dl=2e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=-0.9e-4
+parameters r_tc2=7e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+parameters mis_r=0
+
+model ppolyf_u_body sp_resistor ( 
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_t sp_resistor ( 
+  rsh=60+mc_rt_ppolyf_u*res_mc_skew*sw_stat_global tc1=-1.47e-3 tc2=0.82e-6
+  tnom=25 af=1.79 kf=2.4e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n))*(1+mis_r*sw_stat_mismatch)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for salicided n+ poly over field oxide resistor
+subckt npolyf_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_npolyf_s*(1+mc_rsh_npolyf_s/(rsh_npolyf_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=6.5e-9*(1+mc_dw_npolyf_s*res_mc_skew*sw_stat_global)
+parameters r_dl=1.5e-11
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.26e-3
+parameters r_tc2=0.25e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model npolyf_s_body sp_resistor ( 
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* model for terminal resistor
+model npolyf_s_t sp_resistor ( 
+  rsh=5.5 tc1=1.28e-3 tc2=-0.5e-6 tnom=25 af=1.684 kf=3.6e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) npolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.684 kf=3.6e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) npolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*******************************************************************************************************
+//* model for salicided p+ poly over field oxide resistor
+subckt ppolyf_s(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_ppolyf_s*(1+mc_rsh_ppolyf_s/(rsh_ppolyf_s)*res_mc_skew*sw_stat_global)
+parameters r_dw=7.5e-9*(1+mc_dw_ppolyf_s*res_mc_skew*sw_stat_global)
+parameters r_dl=1.5e-10
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.245e-3
+parameters r_tc2=3.6e-7
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_s_body sp_resistor ( 
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* model for terminal resistor
+model ppolyf_s_t sp_resistor ( 
+  rsh=5 tc1=1.254e-3 tc2=-0.27e-6 tnom=25 af=1.79 kf=2.4e-23 noise=1
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=(r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n))
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1.79 kf=2.4e-23 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_s_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for 1k high-Rs P+ poly on field oxide resistor (LV area)
+//*******************************************************************************************************
+subckt ppolyf_u_1k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_1k*(1+mc_rsh_ppolyf_u_1k/(rsh_ppolyf_u_1k)*res_mc_skew*sw_stat_global) r_dw=0.0148e-6*(1+mc_dw_ppolyf_u_1k*res_mc_skew*sw_stat_global) r_dl=3.85e-11 r_vc1=0 r_vc2=0 r_tc1=-9.39e-4 r_tc2=2.51e-6 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_1k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_1k_t sp_resistor ( 
+  rsh=85.45+mc_rt_ppolyf_u_1k*res_mc_skew*sw_stat_global tc1=-7.92e-3 tc2=4.25e-5
+  tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 2k high-rs P+ poly on field oxide resistor (LV area)
+//*******************************************************************************************************
+//* model for 2k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_2k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_2k*(1+mc_rsh_ppolyf_u_2k/(rsh_ppolyf_u_2k)*res_mc_skew*sw_stat_global) r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_2k*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_2k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_2k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_2k*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for 1k high-Rs P+ poly on field oxide resistor (MV area)
+//*******************************************************************************************************
+subckt ppolyf_u_1k_6p0(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_1k_6p0*(1+mc_rsh_ppolyf_u_1k_6p0/(rsh_ppolyf_u_1k_6p0)*res_mc_skew*sw_stat_global) r_dw=0.0148e-6*(1+mc_dw_ppolyf_u_1k_6p0*res_mc_skew*sw_stat_global) r_dl=3.85e-11 r_vc1=0 r_vc2=0 r_tc1=-9.39e-4 r_tc2=2.51e-6 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_1k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_1k_t sp_resistor ( 
+  rsh=85.45+mc_rt_ppolyf_u_1k_6p0*res_mc_skew*sw_stat_global tc1=-7.92e-3
+  tc2=4.25e-5 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_1k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 2k high-rs P+ poly on field oxide resistor (MV area)
+//*******************************************************************************************************
+//* model for 2k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_2k_6p0(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_2k_6p0+mc_rsh_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_2k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_2k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_2k_6p0*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_2k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//*** model for 3k high-rs P+ poly on field oxide resistor (LV & MVarea)
+//*******************************************************************************************************
+//* model for 3k high-Rs P+ poly on field oxide resistor
+subckt ppolyf_u_3k(1 2 3)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+//*-------------------
+//* model for body resistor
+parameters r_rsh0=rsh_ppolyf_u_3k*(1+mc_rsh_ppolyf_u_3k/(rsh_ppolyf_u_3k)*res_mc_skew*sw_stat_global) r_dw=0.02256e-6*(1+mc_dw_ppolyf_u_3k*res_mc_skew*sw_stat_global) r_dl=-0.0932e-6 r_vc1=0 r_vc2=0 r_tc1=-0.001669823 r_tc2=3.74326e-06 r_tnom=25 r_l=s*(r_length-2*r_dl) r_w=r_width-2*r_dw r_n=r_l/r_w r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+model ppolyf_u_3k_body sp_resistor ( 
+  af=1 kf=2.62e-26 noise=1
+)
+//* model for terminal resistor
+model ppolyf_u_3k_t sp_resistor ( 
+  rsh=33.16+mc_rt_ppolyf_u_3k*res_mc_skew*sw_stat_global tc1=-0.003763316
+  tc2=9.81166e-06 tnom=25 af=1 kf=2.62e-26
+)
+//* model for substrate capacitor (pF/um2)
+model fox_sub sp_capacitor ( 
+  cox=8.85e-05
+)
+//*-------------------
+//* terminal 1
+rt1 (1 11) ppolyf_u_3k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c1 (1 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//* body
+rb (11 21) (
+  expr=r_temp*r_n*(r_rsh0+r_vc1*abs(v(11,21))/r_n+r_vc2*abs(v(11,21))*abs(v(11,21))/r_n/r_n)
+  declarations=<<<DECL
+    parameter real w=10e-6;
+    parameter real l=10e-6;
+    parameter real temp=27;
+    parameter real dtemp=0;
+    parameter real kf = 0;
+    parameter real af = 1;
+    parameter real ef = 1;
+    parameter real short = 0;
+    parameter real narrow = 0;
+    parameter real lf = 1;
+    parameter real wf = 1;
+    parameter integer noise = 1;
+    real devTemp;
+    real noiseArea;
+    real cpscale = $simparam("scale", 1);
+    real r;
+    real i;
+  >>>DECL
+  evaluation=<<<EVAL
+    if ($param_given(temp)) devTemp = temp+`P_CELSIUS0;
+    else devTemp = $temperature + dtemp;
+    if ($param_given(w) || $param_given(l)) begin
+      noiseArea = pow(l*cpscale-2*short, lf)*pow(w*cpscale-2*narrow, wf);
+    end else begin
+      noiseArea = 1;
+    end
+    r = #expr#;
+    i = V(br)/r;
+
+    I(br) <+ i;
+    if (noise) begin
+      I(br) <+ white_noise(4*`P_K*devTemp/r, "thermal");
+      I(br) <+ flicker_noise(kf*pow(i, af)/noiseArea, ef, "flicker");
+    end
+  >>>EVAL
+), (
+  af=1 kf=2.62e-26 noise=1
+)
+//* terminal 2
+rt2 (21 2) ppolyf_u_3k_t  l=s*1u w=r_w dtemp=dtemp $mfactor=m
+c2 (2 3) fox_sub  l=r_l/2 w=r_w dtemp=dtemp $mfactor=m
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 1 resistor
+subckt rm1(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm1
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 2 resistor
+subckt rm2(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm2
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//*******************************************************************************************************
+//* model for metal 3 resistor
+subckt rm3(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_rm3
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.33e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 6k resistor
+subckt tm6k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm6k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.5e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 9k resistor
+subckt tm9k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm9k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.7e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 11k resistor 
+subckt tm11k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters dtemp=0
+parameters par=1
+parameters s=1
+parameters r_rsh0=rsh_tm11k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.7e-3
+parameters r_tc2=0
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*-------------------
+ends
+//***************************************************************************************
+//* model for top metal 30k resistor
+subckt tm30k(1 2)
+parameters m=1
+parameters r_length=1u
+parameters r_width=1u
+parameters par=1
+parameters s=1
+parameters dtemp=0
+parameters r_rsh0=rsh_tm30k
+parameters r_dw=0
+parameters r_dl=0
+parameters r_vc1=0
+parameters r_vc2=0
+parameters r_tc1=3.86e-3
+parameters r_tc2=1.51e-6
+parameters r_tnom=25
+parameters r_l=s*(r_length-2*r_dl)
+parameters r_w=r_width-2*r_dw
+parameters r_n=r_l/r_w
+parameters r_temp=1+r_tc1*($temp+dtemp-r_tnom)+r_tc2*($temp+dtemp-r_tnom)*($temp+dtemp-r_tnom)
+//*-------------------
+//* body
+rb (1 2) (
+  
+  i=m*(v(1,2)/(r_temp*r_n*(r_rsh0+r_vc1*abs(v(1,2))/r_n+r_vc2*abs(v(1,2))*abs(v(1,2))/r_n/r_n)))
+)
+//*rb 1 2 r='r_temp*r_n*r_rsh0' vc1 = 'r_vc1/r_n/r_rsh0' vc2 = 'r_vc2/r_n/r_n/r_rsh0'
+//*-------------------
+ends
+//***************************************************************************************
+//*
+// .lib sm141064.ngspice efuse
+//******************************************************************************
+//*
+//*  A single resistor is used to simulate the resistance.
+//*
+//*                                  Rfuse
+//*                          in  o--/\/\/\/--o  out
+//*
+//*******************************************************************************
+//*
+//*  SYNTAX:
+//*
+//*    Specify fuse as intact (default, pblow=0) or programmed (pblow=1).
+//*
+//*    xxx  in out  efuse (pblow=0)
+//*
+//*  NOTES:
+//*
+//*  1. Model values based on PCELL layout as provided in the design kit. No
+//*     other geometries or layouts are supported.
+//*
+//*  2. Resistance toggles between maximum spec value for intact fuse (<200 ohm)
+//*     and minimum end of life value for programmed fuse (> 900 ohm).
+//*
+//*******************************************************************************
+//*
+subckt efuse(in out)
+parameters m=1
+parameters pblow=0
+//*
+rfuse (in out) gf180_default_mod_r  r=200*(1-pblow)+900*pblow $mfactor=m
+//*
+ends
+
+// .lib sm141064.ngspice res_statistical_par
+parameters mc_rsh_nplus_u=0 mc_rsh_pplus_u=0 mc_rsh_nplus_s=0 mc_rsh_pplus_s=0 mc_rsh_npolyf_u=0 mc_rsh_ppolyf_u=0 mc_rsh_npolyf_s=0 mc_rsh_ppolyf_s=0 mc_rsh_ppolyf_u_1k=0 mc_rsh_ppolyf_u_2k=0 mc_rsh_ppolyf_u_1k_6p0=0 mc_rsh_ppolyf_u_2k_6p0=0 mc_rsh_ppolyf_u_3k=0 mc_dw_nplus_u=0 mc_dw_pplus_u=0 mc_dw_nplus_s=0 mc_dw_pplus_s=0 mc_dw_npolyf_u=0 mc_dw_ppolyf_u=0 mc_dw_npolyf_s=0 mc_dw_ppolyf_s=0 mc_dw_ppolyf_u_1k=0 mc_dw_ppolyf_u_2k=0 mc_dw_ppolyf_u_1k_6p0=0 mc_dw_ppolyf_u_2k_6p0=0 mc_dw_ppolyf_u_3k=0 mc_rt_nplus_u=0 mc_rt_pplus_u=0 mc_rt_npolyf_u=0 mc_rt_ppolyf_u=0 mc_rt_ppolyf_u_1k=0 mc_rt_ppolyf_u_2k=0 mc_rt_ppolyf_u_1k_6p0=0 mc_rt_ppolyf_u_2k_6p0=0 mc_rt_ppolyf_u_3k=0
+
+
+endsection
+

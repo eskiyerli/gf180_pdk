@@ -1,0 +1,13 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+// OSDI files
+load "spice/bjt.osdi"
+load "spice/bsim4v8.osdi"
+load "spice/capacitor.osdi"
+load "spice/diode.osdi"
+load "spice/resistor.osdi"
+
+// Default models
+model gf180_default_mod_c sp_capacitor
+model gf180_default_mod_r sp_resistor

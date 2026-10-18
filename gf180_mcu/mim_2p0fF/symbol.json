@@ -1,274 +1,299 @@
 [
-  {
-    "viewType": "symbol"
-  },
-  {
-    "snapGrid": [
-      10,
-      10
-    ]
-  },
-  {
-    "type": "line",
-    "st": [
-      -60,
-      -20
-    ],
-    "end": [
-      60,
-      -20
-    ],
-    "loc": [
-      0.0,
-      -80.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "line",
-    "st": [
-      -60,
-      20
-    ],
-    "end": [
-      60,
-      20
-    ],
-    "loc": [
-      0.0,
-      -80.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "line",
-    "st": [
-      0,
-      -60
-    ],
-    "end": [
-      0,
-      0
-    ],
-    "loc": [
-      0.0,
-      -100.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "line",
-    "st": [
-      0,
-      100
-    ],
-    "end": [
-      0,
-      40
-    ],
-    "loc": [
-      0.0,
-      -100.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      40,
-      -120
-    ],
-    "nam": "@instName",
-    "def": "[@instName]",
-    "txt": "[@instName]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 16,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      40.0,
-      -170.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      120,
-      20
-    ],
-    "nam": "@L",
-    "def": "[@L:L=%:L=1u]",
-    "txt": "[@L:L=%:L=1u]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      40.0,
-      -120.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      110,
-      20
-    ],
-    "nam": "@W",
-    "def": "[@W:W=%:W=1u]",
-    "txt": "[@W:W=%:W=1u]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      40.0,
-      -140.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      120,
-      30
-    ],
-    "nam": "@m",
-    "def": "[@m:m=%:m=1]",
-    "txt": "[@m:m=%:m=1]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      40.0,
-      -90.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      0,
-      0
-    ],
-    "nam": "@cellName",
-    "def": "[@cellName]",
-    "txt": "[@cellName]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      -30.0,
-      -90.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "pin",
-    "st": [
-      0,
-      120
-    ],
-    "nam": "B",
-    "pd": "Inout",
-    "pt": "Signal",
-    "loc": [
-      0.0,
-      -120.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "pin",
-    "st": [
-      0,
-      -120
-    ],
-    "nam": "G",
-    "pd": "Inout",
-    "pt": "Signal",
-    "loc": [
-      0.0,
-      -40.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "attr",
-    "nam": "SpiceNetlistLine",
-    "def": "%spiceprefix@instName %pinOrder %modelName c_width=@W c_length=@L m=@m"
-  },
-  {
-    "type": "attr",
-    "nam": "modelName",
-    "def": "mim_2p0fF"
-  },
-  {
-    "type": "attr",
-    "nam": "spiceprefix",
-    "def": "X"
-  },
-  {
-    "type": "attr",
-    "nam": "pinOrder",
-    "def": "G, B"
-  }
+ {
+  "viewType": "symbol"
+ },
+ {
+  "snapGrid": [
+   10,
+   10
+  ]
+ },
+ {
+  "type": "line",
+  "st": [
+   -60,
+   -20
+  ],
+  "end": [
+   60,
+   -20
+  ],
+  "loc": [
+   0.0,
+   -80.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "line",
+  "st": [
+   -60,
+   20
+  ],
+  "end": [
+   60,
+   20
+  ],
+  "loc": [
+   0.0,
+   -80.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "line",
+  "st": [
+   0,
+   -60
+  ],
+  "end": [
+   0,
+   0
+  ],
+  "loc": [
+   0.0,
+   -100.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "line",
+  "st": [
+   0,
+   100
+  ],
+  "end": [
+   0,
+   40
+  ],
+  "loc": [
+   0.0,
+   -100.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   40,
+   -120
+  ],
+  "nam": "@instName",
+  "def": "[@instName]",
+  "txt": "[@instName]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 16,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   40.0,
+   -170.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   120,
+   20
+  ],
+  "nam": "@L",
+  "def": "[@L:L=%:L=5u]",
+  "txt": "[@L:L=%:L=5u]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   40.0,
+   -120.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   110,
+   20
+  ],
+  "nam": "@W",
+  "def": "[@W:W=%:W=5u]",
+  "txt": "[@W:W=%:W=5u]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   40.0,
+   -140.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   120,
+   30
+  ],
+  "nam": "@m",
+  "def": "[@m:m=%:m=1]",
+  "txt": "[@m:m=%:m=1]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   40.0,
+   -90.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   0,
+   0
+  ],
+  "nam": "@cellName",
+  "def": "[@cellName]",
+  "txt": "[@cellName]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   -30.0,
+   -90.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "pin",
+  "st": [
+   0,
+   120
+  ],
+  "nam": "B",
+  "pd": "Inout",
+  "pt": "Signal",
+  "loc": [
+   0.0,
+   -120.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "pin",
+  "st": [
+   0,
+   -120
+  ],
+  "nam": "G",
+  "pd": "Inout",
+  "pt": "Signal",
+  "loc": [
+   0.0,
+   -40.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "attr",
+  "nam": "SpiceNetlistLine",
+  "def": "%spiceprefix@instName %pinOrder %modelName c_width=@W c_length=@L m=@m"
+ },
+ {
+  "type": "attr",
+  "nam": "VacaskNetlistLine",
+  "def": "@instName ( %pinOrder ) %modelName c_width=@W c_length=@L m=@m"
+ },
+ {
+  "type": "attr",
+  "nam": "modelName",
+  "def": "mim_2p0fF"
+ },
+ {
+  "type": "attr",
+  "nam": "spiceprefix",
+  "def": "X"
+ },
+ {
+  "type": "attr",
+  "nam": "pinOrder",
+  "def": "G, B"
+ },
+ {
+  "type": "attr",
+  "nam": "lvs_model",
+  "def": "mim_single_2p0fF"
+ },
+ {
+  "type": "attr",
+  "nam": "lvsDeviceType",
+  "def": "cap"
+ },
+ {
+  "type": "attr",
+  "nam": "lvsNetlistLine",
+  "def": "C@instName %pinOrder %lvs_model W=@W L=@L m=@m"
+ },
+ {
+  "type": "attr",
+  "nam": "paramDefs",
+  "def": "[{\"name\":\"W\",\"type\":\"float\",\"parse\":true,\"default\":\"5u\"},{\"name\":\"L\",\"type\":\"float\",\"parse\":true,\"default\":\"5u\"},{\"name\":\"m\",\"type\":\"int\",\"min\":\"1\",\"default\":\"1\"}]"
+ }
 ]

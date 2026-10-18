@@ -49,22 +49,20 @@ class nmos_3p3(baseInst):
         self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return ((self.nf + 1) // 2) * self.W.real / self.nf * Quantity(
             '0.18u').real
 
     def pd_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
+        return 2 * ((self.nf + 1) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real)
 
     def as_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return ((self.nf + 2) // 2) * self.W.real / self.nf * Quantity(
             '0.18u').real
 
     def ps_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
+        return 2 * ((self.nf + 2) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real)
 
     def nrd_parm(self):
         return Quantity('0.18u').real / self.W.real
@@ -82,20 +80,20 @@ class nmos_3p3_sab(baseInst):
         self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
-        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real)
+        return ((self.nf + 1) // 2) * self.W.real / self.nf * Quantity(
+            '0.18u').real
 
     def pd_parm(self):
-        return (2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real))
+        return (2 * ((self.nf + 1) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real))
 
     def as_parm(self):
-        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real)
+        return ((self.nf + 2) // 2) * self.W.real / self.nf * Quantity(
+            '0.18u').real
 
     def ps_parm(self):
-        return (2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real))
+        return (2 * ((self.nf + 2) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real))
 
     def nrd_parm(self):
         return Quantity('0.18u').real / self.W.real
@@ -113,20 +111,20 @@ class nmos_6p0(baseInst):
         self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
-        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real)
+        return ((self.nf + 1) // 2) * self.W.real / self.nf * Quantity(
+            '0.18u').real
 
     def pd_parm(self):
-        return (2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real))
+        return (2 * ((self.nf + 1) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real))
 
     def as_parm(self):
-        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real)
+        return ((self.nf + 2) // 2) * self.W.real / self.nf * Quantity(
+            '0.18u').real
 
     def ps_parm(self):
-        return (2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real))
+        return (2 * ((self.nf + 2) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real))
 
     def nrd_parm(self):
         return Quantity('0.18u').real / self.W.real
@@ -144,20 +142,20 @@ class nmos_6p0_nat(baseInst):
         self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
-        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real)
+        return ((self.nf + 1) // 2) * self.W.real / self.nf * Quantity(
+            '0.18u').real
 
     def pd_parm(self):
-        return (2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real))
+        return (2 * ((self.nf + 1) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real))
 
     def as_parm(self):
-        return (int((self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real)
+        return ((self.nf + 2) // 2) * self.W.real / self.nf * Quantity(
+            '0.18u').real
 
     def ps_parm(self):
-        return (2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real))
+        return (2 * ((self.nf + 2) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real))
 
     def nrd_parm(self):
         return Quantity('0.18u').real / self.W.real
@@ -229,22 +227,20 @@ class pmos_3p3(baseInst):
         self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return ((self.nf + 1) // 2) * self.W.real / self.nf * Quantity(
             '0.18u').real
 
     def pd_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
+        return 2 * ((self.nf + 1) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real)
 
     def as_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return ((self.nf + 2) // 2) * self.W.real / self.nf * Quantity(
             '0.18u').real
 
     def ps_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
+        return 2 * ((self.nf + 2) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real)
 
     def nrd_parm(self):
         return Quantity('0.18u').real / self.W.real
@@ -252,24 +248,9 @@ class pmos_3p3(baseInst):
     def nrs_parm(self):
         return Quantity('0.18u').real / self.W.real
 
-    def pd_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
 
-    def as_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
-            '0.18u').real
-
-    def ps_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
-
-    def nrd_parm(self):
-        return Quantity('0.18u').real / self.W.real
-
-    def nrs_parm(self):
-        return Quantity('0.18u').real / self.W.real
+class pmos_3p3_sab(pmos_3p3):
+    pass
 
 
 class pmos_6p0(baseInst):
@@ -281,22 +262,20 @@ class pmos_6p0(baseInst):
         self.nf = int(self._labelsDict['@nf'].labelValue)
 
     def ad_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return ((self.nf + 1) // 2) * self.W.real / self.nf * Quantity(
             '0.18u').real
 
     def pd_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
+        return 2 * ((self.nf + 1) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real)
 
     def as_parm(self):
-        return int(
-            (self.nf.real + 1) / 2) * self.W.real / self.nf.real * Quantity(
+        return ((self.nf + 2) // 2) * self.W.real / self.nf * Quantity(
             '0.18u').real
 
     def ps_parm(self):
-        return 2 * int((self.nf.real + 1) / 2) * (
-                self.W.real / self.nf.real + Quantity('0.18u').real)
+        return 2 * ((self.nf + 2) // 2) * (
+                self.W.real / self.nf + Quantity('0.18u').real)
 
     def nrd_parm(self):
         return Quantity('0.18u').real / self.W.real

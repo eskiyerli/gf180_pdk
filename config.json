@@ -1,21 +1,32 @@
 {
-  "pdk_name": "defaultPDK",
-  "pdk_version": "1.0.0",
-  "technology": "130nm",
-  "copyright": "Mozilla Public License 2.0 modified with Commons Clause",
+  "pdk_name":"gf180mcu",
+  "pdk_version": "0.3.0",
+  "technology": "GlobalFoundries GF180MCU Open Source PDK",
+  "description": "GlobalFoundries GF180MCU 180nm open source PDK for Revolution EDA. Includes schematic/symbol/layout layers, simulation models, and DRC/LVS integration with KLayout.",
+  "copyright": "Apache License Version 2.0",
+  "binary": 0,
   "menu_items": [
     {
       "location": "menuBar",
-      "menu": "Tools",
-      "action": "AI Terminal",
-      "text": "AI Terminal",
-      "module": "aiTerminal",
-      "callback": "toggleAITerminal",
-      "shortcut": "Ctrl+T",
-      "checked": 0,
+      "menu": "Check",
+      "action": "KLayoutDRC",
+      "text": "DRC with KLayout...",
+      "module": "klayoutDRC",
+      "callback": "klayoutDRCClick",
+      "shortcut": "Ctrl+Shift+D",
       "apply": [
-        "schematicEditor",
-        "symbolEditor",
+        "layoutEditor"
+      ]
+    },
+    {
+      "location": "menuBar",
+      "menu": "Check",
+      "action": "KLayoutLVS",
+      "text": "LVS with KLayout...",
+      "module": "klayoutLVS",
+      "callback": "klayoutLVSClick",
+      "shortcut": "Ctrl+Shift+L",
+      "apply": [
         "layoutEditor"
       ]
     }

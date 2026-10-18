@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0",
+  "pinMappings": {},
+  "mappings": {
+    "nmos_3p3": {
+      "w": "@W",
+      "l": "@L",
+      "nf": "@nf"
+    },
+    "nmos_3p3_sab": {
+      "w": "@W",
+      "l": "@L",
+      "nf": "@nf"
+    },
+    "nmos_6p0": {
+      "w": "@W",
+      "l": "@L",
+      "nf": "@nf"
+    },
+    "nmos_6p0_nat": {
+      "w": "@W",
+      "l": "@L",
+      "nf": "@nf"
+    },
+    "pmos_3p3": {
+      "w": "@W",
+      "l": "@L",
+      "nf": "@nf"
+    },
+    "pmos_3p3_sab": {
+      "w": "@W",
+      "l": "@L",
+      "nf": "@nf"
+    },
+    "pmos_6p0": {
+      "w": "@W",
+      "l": "@L",
+      "nf": "@nf"
+    },
+    "nmoscap_3p3": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "nmoscap_6p0": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "pmoscap_3p3": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "pmoscap_6p0": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "mim_2p0fF": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "nplus_u": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "pplus_u": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "npolyf_u": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "ppolyf_u": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "nwell": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "rm1": {
+      "w": "@W",
+      "l": "@L"
+    },
+    "np_3p3": {
+      "w": "@r_w",
+      "l": "@r_l"
+    },
+    "dnwpw": {
+      "w": "@r_w",
+      "l": "@r_l"
+    },
+    "vnpn_10x10": {},
+    "vpnp_10x10": {}
+  }
+}

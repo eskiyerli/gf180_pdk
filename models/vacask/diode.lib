@@ -1,0 +1,231 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+section tt
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+ parameters jsa=1 rsa=1 cja=1 cjswa=1 jsa_sc=0 vba_sc=0 rs_sc=1 jtuna_sc=0 cja_sc=1
+ // .lib sm141064.ngspice dio
+
+model np_3p3 sp_diode ( 
+  tref=25 is=2.2959e-007*jsa jsw=2.1207e-013*jsa ik=300000 bv=11.0 ibv=0.001
+  n=1.01 rs=2e-010*rsa jtun=1.1223e-005 jtunsw=6.4125e-012 ntun=10
+  cj=0.00096797*cja cjp=1.5663e-010*cjswa pb=0.70172 php=0.8062 mj=0.32071
+  mjsw=0.1 tlev=1 tlevc=1 trs=4.5778e-005 xti=3 xtitun=-25 cta=0.0009438
+  ctp=0.00060474 eg=1.17 tpb=0.0018129 tphp=5e-005
+)
+//*
+model pn_3p3 sp_diode ( 
+  tref=25 is=1.653e-007*jsa jsw=2.1207e-013*jsa ik=500000 bv=10.5 ibv=0.001 n=1
+  rs=2e-010*rsa jtun=5.4028e-005 jtunsw=9.8419e-011 ntun=60 cj=0.00094344*cja
+  cjp=1.5078e-010*cjswa pb=0.69939 php=0.8022 mj=0.32084 mjsw=0.05 tlev=1 tlevc=1
+  trs=3.8628e-005 xti=3 xtitun=-40 cta=0.00099187 ctp=0.00063483 eg=1.17
+  tpb=0.0016906 tphp=0.0052
+)
+//*
+model np_6p0 sp_diode ( 
+  tref=25 is=6.88e-007*jsa jsw=4.88e-013*jsa ik=229000 bv=11 ibv=0.001 ikr=1e-030
+  n=1.0541 rs=2e-010*rsa cj=0.00095*cja cjp=1.33e-010*cjswa pb=0.606 php=0.48
+  mj=0.296 mjsw=0.01 tlev=1 tlevc=1 trs=0.0001 xti=5 cta=0.000825 ctp=0.0018
+  tpb=0.00146 tphp=0.00313 eg=1.11
+)
+
+model pn_6p0 sp_diode ( 
+  tref=25 is=2.0867e-007*jsa jsw=1.6088e-013*jsa ik=253800 ikr=0 n=1.0058
+  rs=2.0e-010*rsa cj=0.000912*cja cjsw=1.4649e-010*cjswa pb=0.76836 php=0.5
+  mj=0.32713 mjsw=0.056777 tlev=1 tlevc=1 trs=0.00168 xti=3 cta=0.001
+  ctp=0.00071888 tpb=0.0019314 tphp=0.0017642 eg=1.17 bv=10.5
+)
+//*
+model nwp_3p3 sp_diode ( 
+  area=1.6e-009 pj=0.00016 tref=25 is=1.5654e-006*jsa jsw=1.6912e-012*jsa
+  ik=300000 bv=0 ibv=0.001 n=1.01 rs=2e-010*rsa jtun=0.00037353
+  jtunsw=3.0737e-011 ntun=22 cj=0.00014917*cja cjp=5.8113e-010*cjswa pb=0.5755
+  php=0.55456 mj=0.33979 mjsw=0.2257 tlev=1 tlevc=1 trs=3.8628e-005 xti=3
+  xtitun=-46 cta=0.0023998 ctp=0.0010977 eg=1.18 tpb=0.0027641 tphp=0.0019629
+)
+//*
+model nwp_6p0 sp_diode ( 
+  tref=25 is=1.6119e-006*jsa jsw=2e-012*jsa ik=100000 ikr=0 n=1 rs=2e-010*rsa
+  cj=0.00014914*cja cjsw=5.8719e-010*cjswa pb=0.43905 php=0.48991 mj=0.30525
+  mjsw=0.21757 tlev=1 tlevc=1 trs=0 xti=3 cta=0.0028626 ctp=0.00091707
+  tpb=0.0024779 tphp=0.00125 eg=1.1763 bv=14
+)
+//*
+model dnwpw sp_diode ( 
+  tref=25 is=5.2139e-007*jsa jsw=0*jsa ik=711930 vb=14.732 ibv=0.001 ikr=0 n=0.98
+  rs=2e-010*rsa cj=0.00032124*cja cjp=5.4659e-010*cjswa pb=0.63391 php=0.77752
+  mj=0.31113 mjsw=0.39816 tlev=1 tlevc=1 trs=0.0002207 xti=3 cta=0.0012922
+  ctp=0.0010772 tpb=0.0019819 tphp=0.0016567 eg=1.17
+)
+//*
+model dnwps sp_diode ( 
+  tref=25 is=2e-006*jsa jsw=1e-12*jsa ik=229050 vb=30.48 ibv=0.001 ikr=0
+  n=0.99335 rs=2e-010*rsa cj=0.00022998*cja cjp=7.2369e-010*cjswa pb=0.35175
+  php=0.37806 mj=0.14716 mjsw=0.19821 tlev=1 tlevc=1 trs=0.0026028 xti=3
+  cta=0.0012309 ctp=0.0012111 tpb=0.0019414 tphp=0.0017152 eg=1.17
+)
+//*       
+model sc_diode sp_diode ( 
+  tref=25 js=8.16*10**jsa_sc jsw=0 ik=4e+010 vb=17+vba_sc ibv=9.92e-005
+  ikr=4e+008 n=1.0553 rs=2.768e-009*rs_sc jtun=1048.7*10**jtuna_sc jtunsw=0
+  ntun=72.211 cj=0.00176*cja_sc cjp=0 pb=0.14256 php=0.93627 mj=0.02604
+  mjsw=0.1545 tlev=1 tlevc=1 tcv=-5e-005 trs=0.0022143 xti=3 xtitun=-12.347
+  cta=6.2962e-005 ctp=0 tpb=0.0002696 tphp=0 eg=0.61
+)
+//*
+
+endsection
+
+section ss
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+ parameters jsa=0.85 rsa=1.1 cja=1.1 cjswa=1.1 jsa_sc=-1.6 vba_sc=-7 rs_sc=1.1 jtuna_sc=-0.77 cja_sc=1.1
+ // .lib sm141064.ngspice dio
+
+model np_3p3 sp_diode ( 
+  tref=25 is=2.2959e-007*jsa jsw=2.1207e-013*jsa ik=300000 bv=11.0 ibv=0.001
+  n=1.01 rs=2e-010*rsa jtun=1.1223e-005 jtunsw=6.4125e-012 ntun=10
+  cj=0.00096797*cja cjp=1.5663e-010*cjswa pb=0.70172 php=0.8062 mj=0.32071
+  mjsw=0.1 tlev=1 tlevc=1 trs=4.5778e-005 xti=3 xtitun=-25 cta=0.0009438
+  ctp=0.00060474 eg=1.17 tpb=0.0018129 tphp=5e-005
+)
+//*
+model pn_3p3 sp_diode ( 
+  tref=25 is=1.653e-007*jsa jsw=2.1207e-013*jsa ik=500000 bv=10.5 ibv=0.001 n=1
+  rs=2e-010*rsa jtun=5.4028e-005 jtunsw=9.8419e-011 ntun=60 cj=0.00094344*cja
+  cjp=1.5078e-010*cjswa pb=0.69939 php=0.8022 mj=0.32084 mjsw=0.05 tlev=1 tlevc=1
+  trs=3.8628e-005 xti=3 xtitun=-40 cta=0.00099187 ctp=0.00063483 eg=1.17
+  tpb=0.0016906 tphp=0.0052
+)
+//*
+model np_6p0 sp_diode ( 
+  tref=25 is=6.88e-007*jsa jsw=4.88e-013*jsa ik=229000 bv=11 ibv=0.001 ikr=1e-030
+  n=1.0541 rs=2e-010*rsa cj=0.00095*cja cjp=1.33e-010*cjswa pb=0.606 php=0.48
+  mj=0.296 mjsw=0.01 tlev=1 tlevc=1 trs=0.0001 xti=5 cta=0.000825 ctp=0.0018
+  tpb=0.00146 tphp=0.00313 eg=1.11
+)
+
+model pn_6p0 sp_diode ( 
+  tref=25 is=2.0867e-007*jsa jsw=1.6088e-013*jsa ik=253800 ikr=0 n=1.0058
+  rs=2.0e-010*rsa cj=0.000912*cja cjsw=1.4649e-010*cjswa pb=0.76836 php=0.5
+  mj=0.32713 mjsw=0.056777 tlev=1 tlevc=1 trs=0.00168 xti=3 cta=0.001
+  ctp=0.00071888 tpb=0.0019314 tphp=0.0017642 eg=1.17 bv=10.5
+)
+//*
+model nwp_3p3 sp_diode ( 
+  area=1.6e-009 pj=0.00016 tref=25 is=1.5654e-006*jsa jsw=1.6912e-012*jsa
+  ik=300000 bv=0 ibv=0.001 n=1.01 rs=2e-010*rsa jtun=0.00037353
+  jtunsw=3.0737e-011 ntun=22 cj=0.00014917*cja cjp=5.8113e-010*cjswa pb=0.5755
+  php=0.55456 mj=0.33979 mjsw=0.2257 tlev=1 tlevc=1 trs=3.8628e-005 xti=3
+  xtitun=-46 cta=0.0023998 ctp=0.0010977 eg=1.18 tpb=0.0027641 tphp=0.0019629
+)
+//*
+model nwp_6p0 sp_diode ( 
+  tref=25 is=1.6119e-006*jsa jsw=2e-012*jsa ik=100000 ikr=0 n=1 rs=2e-010*rsa
+  cj=0.00014914*cja cjsw=5.8719e-010*cjswa pb=0.43905 php=0.48991 mj=0.30525
+  mjsw=0.21757 tlev=1 tlevc=1 trs=0 xti=3 cta=0.0028626 ctp=0.00091707
+  tpb=0.0024779 tphp=0.00125 eg=1.1763 bv=14
+)
+//*
+model dnwpw sp_diode ( 
+  tref=25 is=5.2139e-007*jsa jsw=0*jsa ik=711930 vb=14.732 ibv=0.001 ikr=0 n=0.98
+  rs=2e-010*rsa cj=0.00032124*cja cjp=5.4659e-010*cjswa pb=0.63391 php=0.77752
+  mj=0.31113 mjsw=0.39816 tlev=1 tlevc=1 trs=0.0002207 xti=3 cta=0.0012922
+  ctp=0.0010772 tpb=0.0019819 tphp=0.0016567 eg=1.17
+)
+//*
+model dnwps sp_diode ( 
+  tref=25 is=2e-006*jsa jsw=1e-12*jsa ik=229050 vb=30.48 ibv=0.001 ikr=0
+  n=0.99335 rs=2e-010*rsa cj=0.00022998*cja cjp=7.2369e-010*cjswa pb=0.35175
+  php=0.37806 mj=0.14716 mjsw=0.19821 tlev=1 tlevc=1 trs=0.0026028 xti=3
+  cta=0.0012309 ctp=0.0012111 tpb=0.0019414 tphp=0.0017152 eg=1.17
+)
+//*       
+model sc_diode sp_diode ( 
+  tref=25 js=8.16*10**jsa_sc jsw=0 ik=4e+010 vb=17+vba_sc ibv=9.92e-005
+  ikr=4e+008 n=1.0553 rs=2.768e-009*rs_sc jtun=1048.7*10**jtuna_sc jtunsw=0
+  ntun=72.211 cj=0.00176*cja_sc cjp=0 pb=0.14256 php=0.93627 mj=0.02604
+  mjsw=0.1545 tlev=1 tlevc=1 tcv=-5e-005 trs=0.0022143 xti=3 xtitun=-12.347
+  cta=6.2962e-005 ctp=0 tpb=0.0002696 tphp=0 eg=0.61
+)
+//*
+
+endsection
+
+section ff
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+ parameters jsa=1.15 rsa=0.9 cja=0.9 cjswa=0.9 jsa_sc=1.6 vba_sc=7 rs_sc=0.9 jtuna_sc=0.77 cja_sc=0.9
+ // .lib sm141064.ngspice dio
+
+model np_3p3 sp_diode ( 
+  tref=25 is=2.2959e-007*jsa jsw=2.1207e-013*jsa ik=300000 bv=11.0 ibv=0.001
+  n=1.01 rs=2e-010*rsa jtun=1.1223e-005 jtunsw=6.4125e-012 ntun=10
+  cj=0.00096797*cja cjp=1.5663e-010*cjswa pb=0.70172 php=0.8062 mj=0.32071
+  mjsw=0.1 tlev=1 tlevc=1 trs=4.5778e-005 xti=3 xtitun=-25 cta=0.0009438
+  ctp=0.00060474 eg=1.17 tpb=0.0018129 tphp=5e-005
+)
+//*
+model pn_3p3 sp_diode ( 
+  tref=25 is=1.653e-007*jsa jsw=2.1207e-013*jsa ik=500000 bv=10.5 ibv=0.001 n=1
+  rs=2e-010*rsa jtun=5.4028e-005 jtunsw=9.8419e-011 ntun=60 cj=0.00094344*cja
+  cjp=1.5078e-010*cjswa pb=0.69939 php=0.8022 mj=0.32084 mjsw=0.05 tlev=1 tlevc=1
+  trs=3.8628e-005 xti=3 xtitun=-40 cta=0.00099187 ctp=0.00063483 eg=1.17
+  tpb=0.0016906 tphp=0.0052
+)
+//*
+model np_6p0 sp_diode ( 
+  tref=25 is=6.88e-007*jsa jsw=4.88e-013*jsa ik=229000 bv=11 ibv=0.001 ikr=1e-030
+  n=1.0541 rs=2e-010*rsa cj=0.00095*cja cjp=1.33e-010*cjswa pb=0.606 php=0.48
+  mj=0.296 mjsw=0.01 tlev=1 tlevc=1 trs=0.0001 xti=5 cta=0.000825 ctp=0.0018
+  tpb=0.00146 tphp=0.00313 eg=1.11
+)
+
+model pn_6p0 sp_diode ( 
+  tref=25 is=2.0867e-007*jsa jsw=1.6088e-013*jsa ik=253800 ikr=0 n=1.0058
+  rs=2.0e-010*rsa cj=0.000912*cja cjsw=1.4649e-010*cjswa pb=0.76836 php=0.5
+  mj=0.32713 mjsw=0.056777 tlev=1 tlevc=1 trs=0.00168 xti=3 cta=0.001
+  ctp=0.00071888 tpb=0.0019314 tphp=0.0017642 eg=1.17 bv=10.5
+)
+//*
+model nwp_3p3 sp_diode ( 
+  area=1.6e-009 pj=0.00016 tref=25 is=1.5654e-006*jsa jsw=1.6912e-012*jsa
+  ik=300000 bv=0 ibv=0.001 n=1.01 rs=2e-010*rsa jtun=0.00037353
+  jtunsw=3.0737e-011 ntun=22 cj=0.00014917*cja cjp=5.8113e-010*cjswa pb=0.5755
+  php=0.55456 mj=0.33979 mjsw=0.2257 tlev=1 tlevc=1 trs=3.8628e-005 xti=3
+  xtitun=-46 cta=0.0023998 ctp=0.0010977 eg=1.18 tpb=0.0027641 tphp=0.0019629
+)
+//*
+model nwp_6p0 sp_diode ( 
+  tref=25 is=1.6119e-006*jsa jsw=2e-012*jsa ik=100000 ikr=0 n=1 rs=2e-010*rsa
+  cj=0.00014914*cja cjsw=5.8719e-010*cjswa pb=0.43905 php=0.48991 mj=0.30525
+  mjsw=0.21757 tlev=1 tlevc=1 trs=0 xti=3 cta=0.0028626 ctp=0.00091707
+  tpb=0.0024779 tphp=0.00125 eg=1.1763 bv=14
+)
+//*
+model dnwpw sp_diode ( 
+  tref=25 is=5.2139e-007*jsa jsw=0*jsa ik=711930 vb=14.732 ibv=0.001 ikr=0 n=0.98
+  rs=2e-010*rsa cj=0.00032124*cja cjp=5.4659e-010*cjswa pb=0.63391 php=0.77752
+  mj=0.31113 mjsw=0.39816 tlev=1 tlevc=1 trs=0.0002207 xti=3 cta=0.0012922
+  ctp=0.0010772 tpb=0.0019819 tphp=0.0016567 eg=1.17
+)
+//*
+model dnwps sp_diode ( 
+  tref=25 is=2e-006*jsa jsw=1e-12*jsa ik=229050 vb=30.48 ibv=0.001 ikr=0
+  n=0.99335 rs=2e-010*rsa cj=0.00022998*cja cjp=7.2369e-010*cjswa pb=0.35175
+  php=0.37806 mj=0.14716 mjsw=0.19821 tlev=1 tlevc=1 trs=0.0026028 xti=3
+  cta=0.0012309 ctp=0.0012111 tpb=0.0019414 tphp=0.0017152 eg=1.17
+)
+//*       
+model sc_diode sp_diode ( 
+  tref=25 js=8.16*10**jsa_sc jsw=0 ik=4e+010 vb=17+vba_sc ibv=9.92e-005
+  ikr=4e+008 n=1.0553 rs=2.768e-009*rs_sc jtun=1048.7*10**jtuna_sc jtunsw=0
+  ntun=72.211 cj=0.00176*cja_sc cjp=0 pb=0.14256 php=0.93627 mj=0.02604
+  mjsw=0.1545 tlev=1 tlevc=1 tcv=-5e-005 trs=0.0022143 xti=3 xtitun=-12.347
+  cta=6.2962e-005 ctp=0 tpb=0.0002696 tphp=0 eg=0.61
+)
+//*
+
+endsection
+

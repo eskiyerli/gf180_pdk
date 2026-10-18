@@ -1,0 +1,91 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+
+subckt nmos_10p0_asym(d g s b)
+parameters m=1
+parameters w=25e-6
+parameters l=0.6e-6
+parameters ad=w*1.48e-6
+parameters pd=2*(1.48e-6+w)
+parameters as=w*0.48e-6
+parameters ps=(w+0.48e-6)*2
+parameters nrd=0
+parameters nrs=0
+parameters nf=1
+parameters dtemp=0
+parameters sa=0
+parameters sb=0
+parameters sd=0
+parameters par=1
+parameters rdrift1=1.5433e3 wa=-1.6705e-8 rd=0.17322 ra=4.631e-3 rb=1.1181 lb=-1.0648e-6 wb=-2.8512e-7 trx1=2.8643e-3 trx2=1.0098e-5 trth1=5.5e-4 trth2=0 cgdl_d2=5.0343e-10 toxep=1.376e-8 lcgd_d2=6.4774e-10 cgdv_d=1.0253 cgd_val=0.20473 cgsl_s=1.2929e-10 lcgs=2.9695e-8 cgs_slope=4.0853 cgs_vth=0.10612 cgs_factor=0.9 vthd=4.18986e-2 cgd_vthd=0.31232 cgb_slope=1.0158 cgb_vth=0.82325 cgb_amp=1.3591e-9 cgb_min=7.4448e-10 cgb_power=2.5552 lcgd_d=1.4497e-7 polar_d=-1.0276e-3 polard_min=7.05 polar_s=-0.35192 polars_min=4.2 cgs_factor2=1 cgdv_d2=-2.1473 cgdl_d=1.3222e-11 cgs_vth1=0.20635
+parameters cgds_fixed=3.9*8.854e-12/toxep
+rdrift (d d2) gf180_default_mod_r (
+  r=(rdrift1*nmos_10p0_asym_drdrift)*1.2e-6/(w/nf-wa) tc1=trx1 tc2=trx2
+  $mfactor=m*nf
+)
+rd2 (d2 d1) (
+  i=m*(v(d2,d1)*nf/((max(1e-2,(rd*nmos_10p0_asym_drdsw*(1+trth1*($temp+dtemp-25)+trth2*($temp+dtemp-25)*($temp+dtemp-25)))/(w/nf-wb)*(tanh(ra*(v(d,s)-rb*(l-lb)/(0.6e-6-lb))))))))
+)
+m0 (d1 g s b) nmos_10p0_asym_core ( $mfactor=m
+  w=w l=l as=as ad=ad ps=ps pd=pd nf=nf nrd=nrd nrs=nrs sa=sa sb=sb sd=sd
+)
+c1_gd (g d) (
+  i=m*(ddt((nmos_10p0_asym_dcgd*(cgds_fixed*w*lcgd_d+exp(polar_d*min(max(v(d,s)-vthd,0),polard_min))*cgdl_d*w*(1+tanh(cgdv_d/(1+cgd_val*max(v(d,g),0))*(v(g,d1)+cgd_vthd*(1+cgdv_d2*v(d,d1))-nmos_10p0_asym_dvth0)))))*v(g,d)))
+)
+c1_gd2 (g d1) (
+  i=m*(ddt((nmos_10p0_asym_dcgd*(cgds_fixed*w*lcgd_d2+cgdl_d2*w*(1+tanh(cgdv_d/(1+cgd_val*max(v(d,g),0))*(v(g,d1)+cgd_vthd*(1+cgdv_d2*v(d,d1))-nmos_10p0_asym_dvth0)))))*v(g,d1)))
+)
+c2_gs (g s) (
+  i=m*(ddt((nmos_10p0_asym_dcgs*(cgds_fixed*w*lcgs+cgsl_s*w*(1-tanh(cgs_slope*(v(s,g)+cgs_vth)))*(1+cgs_factor/(1+cgs_factor2*exp(-v(g,d1)-cgs_vth1))*(1-exp(polar_s*min(max(v(d1,s)-vthd,0),polars_min))))))*v(g,s)))
+)
+c3_gb (g b) (
+  i=m*(ddt(((cgb_min+cgb_amp/(1+(1/pow(max(1e-3,cgb_slope*(v(b,g)-cgb_vth+nmos_10p0_asym_dvth0)),cgb_power))))*w)*v(g,b)))
+)
+
+model nmos_10p0_asym_core sp_bsim4v8 ( 
+  type=1 
+  binunit=1 paramchk=1 mobmod=0 capmod=2 rdsmod=0 igcmod=0 igbmod=0 rbodymod=0
+  trnqsmod=0 acnqsmod=0 fnoimod=1 tnoimod=0 diomod=2 tempmod=0 permod=1 geomod=0
+  lmin=6e-7 lmax=20.01e-6 wmin=4e-6 wmax=50.01e-6 epsrox=3.9
+  toxe=1.398e-8+nmos_10p0_asym_dtox xj=1.5e-7 ndep=1.7e17 ngate=2.9861e21
+  nsd=1e20 rsh=7 phin=0 wint=0 wl=0 wln=1 ww=0 wwn=1 wwl=0 lint=0 ll=0 lln=1 lw=0
+  lwn=1 lwl=0 dwg=-2.9807e-8 dwb=-3.3647e-8 xl=0+nmos_10p0_asym_dxl
+  xw=0+nmos_10p0_asym_dxw vth0=0.653+nmos_10p0_asym_dvth0 lvth0=0 wvth0=0
+  pvth0=0.19879 vfb=-0.55 k1=0.9621 lk1=0 k2=-7.2357e-3 lk2=0 k3=13.237 wk3=0
+  k3b=0.25485 w0=1e-6 lpe0=1.0439e-6 lpeb=6.2517e-7 dvtp0=0 dvtp1=0 dvt0=0.09762
+  dvt1=0.021131 dvt2=-0.046683 dvt0w=3.4488 dvt1w=9.5865e4 dvt2w=0.034426
+  u0=0.0486*nmos_10p0_asym_du0 lu0=5.2003e-3*nmos_10p0_asym_du0
+  wu0=-0.020672*nmos_10p0_asym_du0 pu0=3.9064e-3*nmos_10p0_asym_du0 ua=-1.05e-10
+  lua=4.2194e-10 pua=0 ub=3.0678e-18 lub=-1.9302e-18 pub=-6.8e-19 uc=1.0312e-10
+  luc=-4.7702e-11 puc=-6.8588e-11 vsat=7.9784e4*nmos_10p0_asym_dvsat
+  lvsat=9844*nmos_10p0_asym_dvsat wvsat=0 pvsat=-3.168e3 a0=1.0212 la0=-0.55504
+  ags=0.13804 lags=0 wags=-0.012 b0=6.48e-6 b1=5.9519e-5 keta=-0.01362
+  lketa=-3.3807e-3 a1=-0.065307 a2=0.94 rdsw=200*nmos_10p0_asym_drdsw prdsw=0
+  rdswmin=500 prwb=0.81 pprwb=0 prwg=0.037838 pprwg=0 wr=1 voff=-0.092552
+  voffl=-1.4059e-8 minv=0 nfactor=0.90694 lnfactor=6.48e-7 eta0=0.039833
+  etab=-1.2928 dsub=0.56 cit=0 cdsc=1.1424e-5 cdscb=2.4894e-6 cdscd=0
+  pclm=0.02794 pdiblc1=0.46226 pdiblc2=1.092e-4 pdiblcb=-5e-3 drout=0.45
+  pscbe1=4.9654e8 pscbe2=1.6381e-7 pvag=0.9 delta=0.01 alpha0=-2.5481e-7
+  alpha1=0.59769 beta0=37.485 lbeta0=-11.164 wbeta0=2.034 pbeta0=-0.645
+  agidl=5.7877e-16 bgidl=1.171e9 cgidl=0.228 egidl=0.0968
+  noia=nmos_10p0_asym_noia noib=nmos_10p0_asym_noib noic=nmos_10p0_asym_noic
+  em=4.1e7 ef=1.0914 xpart=1 cgso=0 cgdo=0 cgbo=1e-13 ckappas=0.6 ckappad=0.6
+  dlc=1.723e-7 noff=1.9257 lnoff=1 voffcv=-0.038 acde=0.54775 moin=16.92 cgsl=0
+  cgdl=0 xjbvs=1 xjbvd=1 bvs=11 bvd=14.5 jss=6.88e-7 jsd=1.6119e-6 jsws=4.88e-13
+  jswd=4.824e-12 jswgs=4.88e-13 jswgd=4.824e-12 jtsd=1.4513e-4 xtsd=0.63818
+  vtsd=2.16 cjs=9.5e-4*nmos_10p0_asym_dcjs cjd=1.4914e-4*nmos_10p0_asym_dcjd
+  mjs=0.296 mjd=0.30525 mjsws=0.01 mjswd=0.21757
+  cjsws=1.33e-10*nmos_10p0_asym_dcjs cjswd=5.8719e-10*nmos_10p0_asym_dcjd
+  cjswgs=1.33e-10*nmos_10p0_asym_dcjs cjswgd=5.8719e-10*nmos_10p0_asym_dcjd
+  mjswgs=0.01 mjswgd=0.21757 pbs=0.606 pbd=0.43905 pbsws=0.48 pbswd=0.48991
+  pbswgs=0.48 pbswgd=0.48991 tnom=25 ute=-1.3028 lute=0.045577 pute=0.17695
+  kt1=-0.42425 wkt1=0 pkt1=0 kt1l=-1.8892e-8 kt2=-0.060553 pkt2=-0.09625
+  ua1=3.2446e-9 lua1=0 pua1=0 ub1=-4.2148e-18 lub1=0 pub1=0 uc1=-7.2993e-11
+  at=3.3e4 lat=0 pat=-9e3 prt=200 pprt=0 njs=1.0541 njd=1 xtis=3 xtid=3
+  tpb=2.11e-3 tpbsw=1.9e-3 tpbswg=1.9e-3 tcj=1.65e-3 tcjsw=1.61e-3 tcjswg=1.61e-3
+)
+ends
+

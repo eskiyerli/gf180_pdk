@@ -1,0 +1,20 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+
+
+
+
+parameters mc_vsat2_10v=agauss(0,1,3) mc_rd_10v_2=agauss(0,1,3) mc_u0_10v_2=agauss(0,1,3) mc_cgol_10v_2=agauss(0,1,3) mc_vsatn2_10v=agauss(0,1,3) mc_rdn_10v_2=agauss(0,1,3) mc_u0n_10v_2=agauss(0,1,3) mc_cgoln_10v_2=agauss(0,1,3) mc_vsatp2_10v=agauss(0,1,3) mc_u0p2_10v=agauss(0,1,3) mc_rdp_10v_2=agauss(0,1,3) mc_cgolp_10v_2=agauss(0,1,3) mc_vsat_10v=mc_vsat2_10v mc_rd_10v=mc_rd_10v_2 mc_u0_10v=mc_u0_10v_2 mc_cgol_10v=mc_cgol_10v_2 mc_vsatn_10v=mc_vsatn2_10v mc_rdn_10v=mc_rdn_10v_2 mc_u0n_10v=mc_u0n_10v_2 mc_cgoln_10v=mc_cgoln_10v_2 mc_vsatp_10v=mc_vsatp2_10v mc_u0p_10v=mc_u0p2_10v mc_rdp_10v=mc_rdp_10v_2 mc_cgolp_10v=mc_cgolp_10v_2
+
+parameters nmos_10p0_asym_sig_vth=0.01675*(0.7*mc_sig_vth+0.7*mc_sig_vthn)*sw_stat_global*mc_skew nmos_10p0_asym_dtox=7.2e-11*(0.77*mc_toxe+0.63*mc_toxen)*sw_stat_global*mc_skew nmos_10p0_asym_dxl=5.3e-9*(0.71*mc_xl+0.69*mc_xln)*sw_stat_global*mc_skew nmos_10p0_asym_dxw=3.25e-8*(0.77*mc_xw+0.63*mc_xwn)*sw_stat_global*mc_skew nmos_10p0_asym_dvth0=nmos_10p0_asym_sig_vth nmos_10p0_asym_drdsw=(1+0.093*(0.77*mc_rd_10v+0.63*mc_rdn_10v)*sw_stat_global*mc_skew) nmos_10p0_asym_drdrift=(1+0.037*(0.77*mc_rd_10v+0.63*mc_rdn_10v)*sw_stat_global*mc_skew) nmos_10p0_asym_dvsat=(1+0.028*(0.77*mc_vsat_10v+0.63*mc_vsatn_10v)*sw_stat_global*mc_skew) nmos_10p0_asym_du0=(1+0.0157*(0.7*mc_u0_10v+0.7*mc_u0n_10v)*sw_stat_global*mc_skew) nmos_10p0_asym_dcgs=(1+(12e-3*mc_cgol_10v+12e-3*mc_cgoln_10v)*sw_stat_global*mc_skew) nmos_10p0_asym_dcgd=(1+(24e-3*mc_cgol_10v+24e-3*mc_cgoln_10v)*sw_stat_global*mc_skew) nmos_10p0_asym_dcjs=(1+(12e-3*mc_cgol_10v+12e-3*mc_cgoln_10v)*sw_stat_global*mc_skew) nmos_10p0_asym_dcjd=(1+(24e-3*mc_cgol_10v+24e-3*mc_cgoln_10v)*sw_stat_global*mc_skew)
+
+
+parameters pmos_10p0_asym_sig_dvth1=0.01692*(-0.7*mc_sig_vth+0.7*mc_sig_vthp)*sw_stat_global*mc_skew pmos_10p0_asym_dtox=7.143e-11*(0.77*mc_toxe+0.63*mc_toxep)*sw_stat_global*mc_skew pmos_10p0_asym_dxl=1.7e-8*(0.71*mc_xl+0.69*mc_xlp)*sw_stat_global*mc_skew pmos_10p0_asym_dxw=7.4e-8*(0.77*mc_xw+0.63*mc_xwp)*sw_stat_global*mc_skew pmos_10p0_asym_dvth0=pmos_10p0_asym_sig_dvth1 pmos_10p0_asym_drdsw=(1+0.085*(0.77*mc_rd_10v+0.63*mc_rdp_10v)*sw_stat_global*mc_skew) pmos_10p0_asym_drdrift=(1+0.032*(0.77*mc_rd_10v+0.63*mc_rdp_10v)*sw_stat_global*mc_skew) pmos_10p0_asym_dvsat=(1+0.032*(0.77*mc_vsat_10v+0.63*mc_vsatp_10v)*sw_stat_global*mc_skew) pmos_10p0_asym_du0=(1+0.0097*(0.7*mc_u0_10v+0.7*mc_u0p_10v)*sw_stat_global*mc_skew) pmos_10p0_asym_dcgs=(1+(12e-3*mc_cgol_10v+12e-3*mc_cgolp_10v)*sw_stat_global*mc_skew) pmos_10p0_asym_dcgd=(1+(24e-3*mc_cgol_10v+24e-3*mc_cgolp_10v)*sw_stat_global*mc_skew) pmos_10p0_asym_dcjs=(1+(12e-3*mc_cgol_10v+12e-3*mc_cgolp_10v)*sw_stat_global*mc_skew) pmos_10p0_asym_dcjd=(1+(24e-3*mc_cgol_10v+24e-3*mc_cgolp_10v)*sw_stat_global*mc_skew)
+
+
+include "ldmos_nmos.lib"
+include "ldmos_pmos.lib"
+include "ldmos_noise.lib"

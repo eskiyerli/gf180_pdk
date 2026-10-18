@@ -1,252 +1,277 @@
 [
-  {
-    "viewType": "symbol"
-  },
-  {
-    "snapGrid": [
-      5,
-      5
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      -50,
-      -110
-    ],
-    "nam": "@modelName",
-    "def": "[@modelName]",
-    "txt": "[@modelName]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      -20.0,
-      -100.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      40,
-      -120
-    ],
-    "nam": "@instName",
-    "def": "[@instName]",
-    "txt": "[@instName]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 16,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      30.0,
-      -170.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      30,
-      -100
-    ],
-    "nam": "@W",
-    "def": "[@W:W=%:W=1u]",
-    "txt": "[@W:W=%:W=1u]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      30.0,
-      -130.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      30,
-      -70
-    ],
-    "nam": "@L",
-    "def": "[@L:L=%:L=1u]",
-    "txt": "[@L:L=%:L=1u]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      30.0,
-      -110.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "label",
-    "st": [
-      40,
-      -50
-    ],
-    "nam": "@m",
-    "def": "[@m:m=%:m=1]",
-    "txt": "[@m:m=%:m=1]",
-    "val": "",
-    "vis": true,
-    "lt": "NLPLabel",
-    "ht": 12,
-    "al": "Left",
-    "or": "R0",
-    "use": "Normal",
-    "loc": [
-      30.0,
-      -90.0
-    ],
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "rect",
-    "rect": [
-      -10.0,
-      -10.0,
-      10.0,
-      90.0
-    ],
-    "loc": [
-      0.0,
-      -120.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "line",
-    "st": [
-      0,
-      120
-    ],
-    "end": [
-      0,
-      90
-    ],
-    "loc": [
-      0.0,
-      -120.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "line",
-    "st": [
-      0,
-      -40
-    ],
-    "end": [
-      0,
-      -10
-    ],
-    "loc": [
-      0.0,
-      -120.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1,
-      1
-    ]
-  },
-  {
-    "type": "pin",
-    "st": [
-      0,
-      -120
-    ],
-    "nam": "P",
-    "pd": "Inout",
-    "pt": "Signal",
-    "loc": [
-      0.0,
-      -40.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "pin",
-    "st": [
-      0,
-      120
-    ],
-    "nam": "M",
-    "pd": "Inout",
-    "pt": "Signal",
-    "loc": [
-      0.0,
-      -120.0
-    ],
-    "ang": 0.0,
-    "fl": [
-      1.0,
-      1.0
-    ]
-  },
-  {
-    "type": "attr",
-    "nam": "SpiceNetlistLine",
-    "def": "%spiceprefix@instName %pinOrder %modelName r_width=@W r_length=@L m=@m"
-  },
-  {
-    "type": "attr",
-    "nam": "modelName",
-    "def": "rm1"
-  },
-  {
-    "type": "attr",
-    "nam": "spiceprefix",
-    "def": "X"
-  },
-  {
-    "type": "attr",
-    "nam": "pinOrder",
-    "def": "M, P"
-  }
+ {
+  "viewType": "symbol"
+ },
+ {
+  "snapGrid": [
+   5,
+   5
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   -50,
+   -110
+  ],
+  "nam": "@modelName",
+  "def": "[@modelName]",
+  "txt": "[@modelName]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   -20.0,
+   -100.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   40,
+   -120
+  ],
+  "nam": "@instName",
+  "def": "[@instName]",
+  "txt": "[@instName]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 16,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   30.0,
+   -170.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   30,
+   -100
+  ],
+  "nam": "@W",
+  "def": "[@W:W=%:W=0.6u]",
+  "txt": "[@W:W=%:W=0.6u]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   30.0,
+   -130.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   30,
+   -70
+  ],
+  "nam": "@L",
+  "def": "[@L:L=%:L=0.6u]",
+  "txt": "[@L:L=%:L=0.6u]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   30.0,
+   -110.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "label",
+  "st": [
+   40,
+   -50
+  ],
+  "nam": "@m",
+  "def": "[@m:m=%:m=1]",
+  "txt": "[@m:m=%:m=1]",
+  "val": "",
+  "vis": true,
+  "lt": "NLPLabel",
+  "ht": 12,
+  "al": "Left",
+  "or": "R0",
+  "use": "Normal",
+  "loc": [
+   30.0,
+   -90.0
+  ],
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "rect",
+  "rect": [
+   -10.0,
+   -10.0,
+   10.0,
+   90.0
+  ],
+  "loc": [
+   0.0,
+   -120.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "line",
+  "st": [
+   0,
+   120
+  ],
+  "end": [
+   0,
+   90
+  ],
+  "loc": [
+   0.0,
+   -120.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "line",
+  "st": [
+   0,
+   -40
+  ],
+  "end": [
+   0,
+   -10
+  ],
+  "loc": [
+   0.0,
+   -120.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1,
+   1
+  ]
+ },
+ {
+  "type": "pin",
+  "st": [
+   0,
+   -120
+  ],
+  "nam": "P",
+  "pd": "Inout",
+  "pt": "Signal",
+  "loc": [
+   0.0,
+   -40.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "pin",
+  "st": [
+   0,
+   120
+  ],
+  "nam": "M",
+  "pd": "Inout",
+  "pt": "Signal",
+  "loc": [
+   0.0,
+   -120.0
+  ],
+  "ang": 0.0,
+  "fl": [
+   1.0,
+   1.0
+  ]
+ },
+ {
+  "type": "attr",
+  "nam": "SpiceNetlistLine",
+  "def": "%spiceprefix@instName %pinOrder %modelName r_width=@W r_length=@L m=@m"
+ },
+ {
+  "type": "attr",
+  "nam": "VacaskNetlistLine",
+  "def": "@instName ( %pinOrder ) %modelName r_width=@W r_length=@L m=@m"
+ },
+ {
+  "type": "attr",
+  "nam": "modelName",
+  "def": "rm1"
+ },
+ {
+  "type": "attr",
+  "nam": "spiceprefix",
+  "def": "X"
+ },
+ {
+  "type": "attr",
+  "nam": "pinOrder",
+  "def": "M, P"
+ },
+ {
+  "type": "attr",
+  "nam": "lvs_model",
+  "def": "rm1"
+ },
+ {
+  "type": "attr",
+  "nam": "lvsDeviceType",
+  "def": "res"
+ },
+ {
+  "type": "attr",
+  "nam": "lvsNetlistLine",
+  "def": "R@instName %pinOrder %lvs_model W=@W L=@L m=@m"
+ },
+ {
+  "type": "attr",
+  "nam": "paramDefs",
+  "def": "[{\"name\":\"W\",\"type\":\"float\",\"parse\":true,\"default\":\"0.6u\"},{\"name\":\"L\",\"type\":\"float\",\"parse\":true,\"default\":\"0.6u\"},{\"name\":\"m\",\"type\":\"int\",\"min\":\"1\",\"default\":\"1\"}]"
+ }
 ]

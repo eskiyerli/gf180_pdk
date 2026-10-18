@@ -5,26 +5,159 @@
             "modelLibraries": [
                 {
                     "select": true,
-                    "modelPath": "/home/eskiyerli/onedrive_reveda/Projects/design_software/pdks/gf180_pdk/models/sm141064.xyce",
+                    "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
+                    "modelSection": "typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
+                    "modelSection": "bjt_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
+                    "modelSection": "diode_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
+                    "modelSection": "res_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
+                    "modelSection": "mimcap_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
+                    "modelSection": "moscap_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/xyce/smbb000149.xyce",
                     "modelSection": "typical"
                 }
             ],
             "includePaths": [
                 [
                     true,
-                    "/home/eskiyerli/onedrive_reveda/Projects/design_software/pdks/gf180_pdk/models/design.xyce"
+                    "${PDK_ROOT}/models/xyce/design.xyce"
                 ]
             ],
             "modulePaths": []
         },
         "Ngspice": {
-            "modelLibraries": [],
-            "includePaths": [],
+            "modelLibraries": [
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
+                    "modelSection": "typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
+                    "modelSection": "bjt_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
+                    "modelSection": "diode_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
+                    "modelSection": "res_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
+                    "modelSection": "mimcap_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
+                    "modelSection": "moscap_typical"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/ngspice/smbb000149.ngspice",
+                    "modelSection": "typical"
+                }
+            ],
+            "includePaths": [
+                [
+                    true,
+                    "${PDK_ROOT}/models/ngspice/design.ngspice"
+                ]
+            ],
             "modulePaths": []
         },
         "VACASK": {
-            "modelLibraries": [],
-            "includePaths": [],
+            "modelLibraries": [
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/vacask/mos.lib",
+                    "modelSection": "tt"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/vacask/ldmos.lib",
+                    "modelSection": "tt"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/vacask/bjt.lib",
+                    "modelSection": "tt"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/vacask/diode.lib",
+                    "modelSection": "tt"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/vacask/res.lib",
+                    "modelSection": "tt"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/vacask/mimcap.lib",
+                    "modelSection": "tt"
+                },
+                {
+                    "select": true,
+                    "modelPath": "${PDK_ROOT}/models/vacask/moscap.lib",
+                    "modelSection": "tt"
+                }
+            ],
+            "includePaths": [
+                [
+                    true,
+                    "${PDK_ROOT}/models/vacask/common.lib",
+                    ""
+                ],
+                [
+                    true,
+                    "${PDK_ROOT}/models/vacask/design.lib",
+                    ""
+                ],
+                [
+                    false,
+                    "${PDK_ROOT}/models/vacask/statistical.lib",
+                    ""
+                ],
+                [
+                    false,
+                    "${PDK_ROOT}/models/vacask/noise_corner.lib",
+                    ""
+                ],
+                [
+                    false,
+                    "${PDK_ROOT}/models/vacask/ldmos_statistical.lib",
+                    ""
+                ]
+            ],
             "modulePaths": []
         }
     }

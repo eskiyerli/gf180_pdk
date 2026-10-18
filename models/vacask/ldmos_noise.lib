@@ -1,0 +1,7 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+ parameters nmos_10p0_asym_noia=(fnoicor==0)*1.1021e42+(fnoicor==1)*2.5852e42 nmos_10p0_asym_noib=(fnoicor==0)*2.8476e24+(fnoicor==1)*6.5096e+024 nmos_10p0_asym_noic=(fnoicor==0)*8.75+(fnoicor==1)*8.75 pmos_10p0_asym_noia=(fnoicor==0)*2.9073e+041+(fnoicor==1)*1.7073e+042 pmos_10p0_asym_noib=(fnoicor==0)*8.0736e+025+(fnoicor==1)*2.4523e+026 pmos_10p0_asym_noic=(fnoicor==0)*12780+(fnoicor==1)*12780
+

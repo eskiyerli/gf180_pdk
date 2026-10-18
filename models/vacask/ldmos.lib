@@ -1,0 +1,69 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+section tt
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmos_10p0_asym_dtox=0 nmos_10p0_asym_dxl=0 nmos_10p0_asym_dxw=0 nmos_10p0_asym_dvth0=0 nmos_10p0_asym_drdsw=1 nmos_10p0_asym_drdrift=1 nmos_10p0_asym_dvsat=1 nmos_10p0_asym_du0=1 nmos_10p0_asym_dcgs=1 nmos_10p0_asym_dcgd=1 nmos_10p0_asym_dcjs=1 nmos_10p0_asym_dcjd=1 pmos_10p0_asym_dtox=0 pmos_10p0_asym_dxl=0 pmos_10p0_asym_dxw=0 pmos_10p0_asym_dvth0=0 pmos_10p0_asym_drdsw=1 pmos_10p0_asym_drdrift=1 pmos_10p0_asym_dvsat=1 pmos_10p0_asym_du0=1 pmos_10p0_asym_dcgs=1 pmos_10p0_asym_dcgd=1 pmos_10p0_asym_dcjs=1 pmos_10p0_asym_dcjd=1
+
+
+include "ldmos_nmos.lib"
+include "ldmos_pmos.lib"
+include "ldmos_noise.lib"
+
+
+
+endsection
+
+section ss
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmos_10p0_asym_dtox=8e-10 nmos_10p0_asym_dxl=6e-008 nmos_10p0_asym_dxw=-3.46e-8 nmos_10p0_asym_dvth0=0.112 nmos_10p0_asym_drdsw=1.2 nmos_10p0_asym_drdrift=1.271 nmos_10p0_asym_dvsat=0.926 nmos_10p0_asym_du0=0.95 nmos_10p0_asym_dcgs=1.1 nmos_10p0_asym_dcgd=1.2 nmos_10p0_asym_dcjs=1.1 nmos_10p0_asym_dcjd=1.2 pmos_10p0_asym_dtox=8e-10 pmos_10p0_asym_dxl=9.914e-008 pmos_10p0_asym_dxw=-1e-7 pmos_10p0_asym_dvth0=-0.0936 pmos_10p0_asym_drdsw=1.11 pmos_10p0_asym_drdrift=1.144 pmos_10p0_asym_dvsat=0.91 pmos_10p0_asym_du0=0.964 pmos_10p0_asym_dcgs=1.1 pmos_10p0_asym_dcgd=1.2 pmos_10p0_asym_dcjs=1.1 pmos_10p0_asym_dcjd=1.2
+
+include "ldmos_nmos.lib"
+include "ldmos_pmos.lib"
+include "ldmos_noise.lib"
+
+
+
+endsection
+
+section ff
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmos_10p0_asym_dtox=-8e-10 nmos_10p0_asym_dxl=-6e-008 nmos_10p0_asym_dxw=3.46e-8 nmos_10p0_asym_dvth0=-0.10388 nmos_10p0_asym_drdsw=0.868 nmos_10p0_asym_drdrift=0.8245 nmos_10p0_asym_dvsat=1.033 nmos_10p0_asym_du0=1.04 nmos_10p0_asym_dcgs=0.9 nmos_10p0_asym_dcgd=0.8 nmos_10p0_asym_dcjs=0.9 nmos_10p0_asym_dcjd=0.8 pmos_10p0_asym_dtox=-8e-10 pmos_10p0_asym_dxl=-6.804e-008 pmos_10p0_asym_dxw=8.46e-8 pmos_10p0_asym_dvth0=0.099 pmos_10p0_asym_drdsw=0.91 pmos_10p0_asym_drdrift=0.89 pmos_10p0_asym_dvsat=1.06 pmos_10p0_asym_du0=1.03 pmos_10p0_asym_dcgs=0.9 pmos_10p0_asym_dcgd=0.8 pmos_10p0_asym_dcjs=0.9 pmos_10p0_asym_dcjd=0.8
+
+
+include "ldmos_nmos.lib"
+include "ldmos_pmos.lib"
+include "ldmos_noise.lib"
+
+
+endsection
+
+section sf
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmos_10p0_asym_dtox=0 nmos_10p0_asym_dxl=5.024e-008 nmos_10p0_asym_dxw=0 nmos_10p0_asym_dvth0=0.068 nmos_10p0_asym_drdsw=1.2 nmos_10p0_asym_drdrift=1.156 nmos_10p0_asym_dvsat=0.928 nmos_10p0_asym_du0=0.97 nmos_10p0_asym_dcgs=1.07 nmos_10p0_asym_dcgd=1.14 nmos_10p0_asym_dcjs=1.07 nmos_10p0_asym_dcjd=1.14 pmos_10p0_asym_dtox=0 pmos_10p0_asym_dxl=-7.004e-008 pmos_10p0_asym_dxw=0 pmos_10p0_asym_dvth0=0.057672 pmos_10p0_asym_drdsw=0.91 pmos_10p0_asym_drdrift=0.92 pmos_10p0_asym_dvsat=1.012 pmos_10p0_asym_du0=1.03 pmos_10p0_asym_dcgs=0.93 pmos_10p0_asym_dcgd=0.86 pmos_10p0_asym_dcjs=0.93 pmos_10p0_asym_dcjd=0.86
+
+
+include "ldmos_nmos.lib"
+include "ldmos_pmos.lib"
+include "ldmos_noise.lib"
+
+
+endsection
+
+section fs
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmos_10p0_asym_dtox=0 nmos_10p0_asym_dxl=-5.02e-008 nmos_10p0_asym_dxw=0 nmos_10p0_asym_dvth0=-0.058169 nmos_10p0_asym_drdsw=0.868 nmos_10p0_asym_drdrift=0.89748 nmos_10p0_asym_dvsat=1.045 nmos_10p0_asym_du0=1.034 nmos_10p0_asym_dcgs=0.93 nmos_10p0_asym_dcgd=0.86 nmos_10p0_asym_dcjs=0.93 nmos_10p0_asym_dcjd=0.86 pmos_10p0_asym_dtox=0 pmos_10p0_asym_dxl=9.414e-008 pmos_10p0_asym_dxw=0 pmos_10p0_asym_dvth0=-0.056 pmos_10p0_asym_drdsw=1.11 pmos_10p0_asym_drdrift=1.06 pmos_10p0_asym_dvsat=0.989 pmos_10p0_asym_du0=0.97 pmos_10p0_asym_dcgs=1.07 pmos_10p0_asym_dcgd=1.14 pmos_10p0_asym_dcjs=1.07 pmos_10p0_asym_dcjd=1.14
+
+include "ldmos_nmos.lib"
+include "ldmos_pmos.lib"
+include "ldmos_noise.lib"
+
+
+
+endsection
+

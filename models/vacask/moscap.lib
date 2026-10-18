@@ -1,0 +1,369 @@
+// Converted from GlobalFoundries gf180mcuD PDK (ngspice model decks) to VACASK.
+// Generated libraries: do not edit by hand; regenerate from the PDK model sources.
+
+section tt
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmoscap_3p3_corner=1 pmoscap_3p3_corner=1 nmoscap_6p0_corner=1 pmoscap_6p0_corner=1 nmoscap_3p3_b_corner=1 pmoscap_3p3_b_corner=1 nmoscap_6p0_b_corner=1 pmoscap_6p0_b_corner=1
+  
+// .lib sm141064.ngspice moscap
+
+subckt nmoscap_3p3(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002003
+parameters cvar2=0.00198
+parameters cvar3=6.25
+parameters cvar4=-3.9375
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_3p3(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001998
+parameters cvar2=0.00196
+parameters cvar3=-6.25
+parameters cvar4=-4.9375
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_6p0(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001107
+parameters cvar2=0.00107
+parameters cvar3=6.25
+parameters cvar4=-4.1875
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_6p0(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001107
+parameters cvar2=0.00107
+parameters cvar3=-6.25
+parameters cvar4=-5.75
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_3p3_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002458
+parameters cvar2=0.001533
+parameters cvar3=1.515152
+parameters cvar4=0.560606
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_3p3_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002435
+parameters cvar2=0.00154
+parameters cvar3=-1.66667
+parameters cvar4=0.65
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_6p0_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001293
+parameters cvar2=0.000863
+parameters cvar3=1.052632
+parameters cvar4=0.736842
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_6p0_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001325
+parameters cvar2=0.000865
+parameters cvar3=-1.42857
+parameters cvar4=0.642857
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+
+endsection
+
+section ss
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmoscap_3p3_corner=1.1 pmoscap_3p3_corner=1.1 nmoscap_6p0_corner=1.1 pmoscap_6p0_corner=1.1 nmoscap_3p3_b_corner=1.1 pmoscap_3p3_b_corner=1.1 nmoscap_6p0_b_corner=1.1 pmoscap_6p0_b_corner=1.1
+
+// .lib sm141064.ngspice moscap
+
+subckt nmoscap_3p3(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002003
+parameters cvar2=0.00198
+parameters cvar3=6.25
+parameters cvar4=-3.9375
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_3p3(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001998
+parameters cvar2=0.00196
+parameters cvar3=-6.25
+parameters cvar4=-4.9375
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_6p0(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001107
+parameters cvar2=0.00107
+parameters cvar3=6.25
+parameters cvar4=-4.1875
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_6p0(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001107
+parameters cvar2=0.00107
+parameters cvar3=-6.25
+parameters cvar4=-5.75
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_3p3_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002458
+parameters cvar2=0.001533
+parameters cvar3=1.515152
+parameters cvar4=0.560606
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_3p3_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002435
+parameters cvar2=0.00154
+parameters cvar3=-1.66667
+parameters cvar4=0.65
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_6p0_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001293
+parameters cvar2=0.000863
+parameters cvar3=1.052632
+parameters cvar4=0.736842
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_6p0_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001325
+parameters cvar2=0.000865
+parameters cvar3=-1.42857
+parameters cvar4=0.642857
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+
+endsection
+
+section ff
+// Converted from GlobalFoundries gf180mcuD PDK for Ngspice
+
+parameters nmoscap_3p3_corner=0.9 pmoscap_3p3_corner=0.9 nmoscap_6p0_corner=0.9 pmoscap_6p0_corner=0.9 nmoscap_3p3_b_corner=0.9 pmoscap_3p3_b_corner=0.9 nmoscap_6p0_b_corner=0.9 pmoscap_6p0_b_corner=0.9
+
+// .lib sm141064.ngspice moscap
+
+subckt nmoscap_3p3(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002003
+parameters cvar2=0.00198
+parameters cvar3=6.25
+parameters cvar4=-3.9375
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_3p3(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001998
+parameters cvar2=0.00196
+parameters cvar3=-6.25
+parameters cvar4=-4.9375
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_3p3_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_6p0(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001107
+parameters cvar2=0.00107
+parameters cvar3=6.25
+parameters cvar4=-4.1875
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_6p0(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001107
+parameters cvar2=0.00107
+parameters cvar3=-6.25
+parameters cvar4=-5.75
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_6p0_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_3p3_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002458
+parameters cvar2=0.001533
+parameters cvar3=1.515152
+parameters cvar4=0.560606
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_3p3_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.002435
+parameters cvar2=0.00154
+parameters cvar3=-1.66667
+parameters cvar4=0.65
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_3p3_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt nmoscap_6p0_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001293
+parameters cvar2=0.000863
+parameters cvar3=1.052632
+parameters cvar4=0.736842
+c_moscap (1 2) (
+  i=m*(ddt((nmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+subckt pmoscap_6p0_b(1 2)
+parameters m=1
+parameters c_length=1u
+parameters c_width=1u
+parameters dtemp=0
+parameters cvar1=0.001325
+parameters cvar2=0.000865
+parameters cvar3=-1.42857
+parameters cvar4=0.642857
+c_moscap (1 2) (
+  i=m*(ddt((pmoscap_6p0_b_corner*c_length*c_width*(cvar1+cvar2*tanh(cvar3*v(1,2)+cvar4)))*v(1,2)))
+)
+ends
+//*
+
+endsection
+
