@@ -6,37 +6,44 @@
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
-                    "modelSection": "typical"
+                    "modelSection": "typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
-                    "modelSection": "bjt_typical"
+                    "modelSection": "bjt_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
-                    "modelSection": "diode_typical"
+                    "modelSection": "diode_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
-                    "modelSection": "res_typical"
+                    "modelSection": "res_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
-                    "modelSection": "mimcap_typical"
+                    "modelSection": "mimcap_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/xyce/sm141064.xyce",
-                    "modelSection": "moscap_typical"
+                    "modelSection": "moscap_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/xyce/smbb000149.xyce",
-                    "modelSection": "typical"
+                    "modelSection": "typical",
+                    "modelLang": ""
                 }
             ],
             "includePaths": [
@@ -52,37 +59,44 @@
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
-                    "modelSection": "typical"
+                    "modelSection": "typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
-                    "modelSection": "bjt_typical"
+                    "modelSection": "bjt_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
-                    "modelSection": "diode_typical"
+                    "modelSection": "diode_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
-                    "modelSection": "res_typical"
+                    "modelSection": "res_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
-                    "modelSection": "mimcap_typical"
+                    "modelSection": "mimcap_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/ngspice/sm141064.ngspice",
-                    "modelSection": "moscap_typical"
+                    "modelSection": "moscap_typical",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/ngspice/smbb000149.ngspice",
-                    "modelSection": "typical"
+                    "modelSection": "typical",
+                    "modelLang": ""
                 }
             ],
             "includePaths": [
@@ -98,37 +112,44 @@
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/vacask/mos.lib",
-                    "modelSection": "tt"
+                    "modelSection": "tt",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/vacask/ldmos.lib",
-                    "modelSection": "tt"
+                    "modelSection": "tt",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/vacask/bjt.lib",
-                    "modelSection": "tt"
+                    "modelSection": "tt",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/vacask/diode.lib",
-                    "modelSection": "tt"
+                    "modelSection": "tt",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/vacask/res.lib",
-                    "modelSection": "tt"
+                    "modelSection": "tt",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/vacask/mimcap.lib",
-                    "modelSection": "tt"
+                    "modelSection": "tt",
+                    "modelLang": ""
                 },
                 {
                     "select": true,
                     "modelPath": "${PDK_ROOT}/models/vacask/moscap.lib",
-                    "modelSection": "tt"
+                    "modelSection": "tt",
+                    "modelLang": ""
                 }
             ],
             "includePaths": [

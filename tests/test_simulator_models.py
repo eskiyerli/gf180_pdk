@@ -83,14 +83,14 @@ Xfuse ftop 0 efuse pblow=1
 Vdh dh 0 dc 10.0
 Vgh gh 0 dc 10.0
 Xh dh gh 0 0 nmos_10p0_asym W=4u L=0.6u
-{analysis}.include "{model_dir / f'design.{ext}'}"
-.lib "{model_dir / f'sm141064.{ext}'}" typical
-.lib "{model_dir / f'sm141064.{ext}'}" bjt_typical
-.lib "{model_dir / f'sm141064.{ext}'}" diode_typical
-.lib "{model_dir / f'sm141064.{ext}'}" res_typical
-.lib "{model_dir / f'sm141064.{ext}'}" mimcap_typical
-.lib "{model_dir / f'sm141064.{ext}'}" moscap_typical
-.lib "{model_dir / f'smbb000149.{ext}'}" typical
+{analysis}.include "{(model_dir / f'design.{ext}').as_posix()}"
+.lib "{(model_dir / f'sm141064.{ext}').as_posix()}" typical
+.lib "{(model_dir / f'sm141064.{ext}').as_posix()}" bjt_typical
+.lib "{(model_dir / f'sm141064.{ext}').as_posix()}" diode_typical
+.lib "{(model_dir / f'sm141064.{ext}').as_posix()}" res_typical
+.lib "{(model_dir / f'sm141064.{ext}').as_posix()}" mimcap_typical
+.lib "{(model_dir / f'sm141064.{ext}').as_posix()}" moscap_typical
+.lib "{(model_dir / f'smbb000149.{ext}').as_posix()}" typical
 .end
 """
 
@@ -101,14 +101,14 @@ def _vacask_settings() -> tuple[list[tuple[str, str]], list[str]]:
     )["simulators"]["VACASK"]
     libs = [
         (
-            str(PDK_ROOT / entry["modelPath"].split("${PDK_ROOT}/", 1)[1]),
+            (PDK_ROOT / entry["modelPath"].split("${PDK_ROOT}/", 1)[1]).as_posix(),
             entry["modelSection"],
         )
         for entry in settings["modelLibraries"]
         if entry.get("select")
     ]
     includes = [
-        str(PDK_ROOT / entry[1].split("${PDK_ROOT}/", 1)[1])
+        (PDK_ROOT / entry[1].split("${PDK_ROOT}/", 1)[1]).as_posix()
         for entry in settings["includePaths"]
         if entry[0]
     ]
@@ -216,12 +216,12 @@ class TestStagedModelSyntax(unittest.TestCase):
         ):
             sim = settings["simulators"][sim_name]
             expected_libs = [
-                (str(PDK_ROOT / entry["modelPath"].split("${PDK_ROOT}/", 1)[1]),
+                ((PDK_ROOT / entry["modelPath"].split("${PDK_ROOT}/", 1)[1]).as_posix(),
                  entry["modelSection"])
                 for entry in sim["modelLibraries"] if entry.get("select")
             ]
             expected_includes = [
-                str(PDK_ROOT / entry[1].split("${PDK_ROOT}/", 1)[1])
+                (PDK_ROOT / entry[1].split("${PDK_ROOT}/", 1)[1]).as_posix()
                 for entry in sim["includePaths"] if entry[0]
             ]
             fixture = _family_fixture(model_dir, ext, Path("out.csv"), ngspice=ngspice)
@@ -243,10 +243,7 @@ class TestStagedModelSyntax(unittest.TestCase):
                 self.assertIn(name.casefold(), fixture)
 
     def test_xyce_smbb_libraries_are_named(self):
-        paths = (
-            XYCE_MODELS / "smbb000149.xyce",
-            PDK_ROOT / "models" / "smbb000149.xyce",
-        )
+        paths = (XYCE_MODELS / "smbb000149.xyce",)
         for path in paths:
             with self.subTest(path=path):
                 text = path.read_text()
@@ -310,10 +307,7 @@ class TestStagedModelSyntax(unittest.TestCase):
         self.assertEqual(actual_includes, includes)
 
     def test_xyce_moscaps_use_declared_dimensions(self):
-        paths = (
-            XYCE_MODELS / "sm141064.xyce",
-            PDK_ROOT / "models" / "sm141064.xyce",
-        )
+        paths = (XYCE_MODELS / "sm141064.xyce",)
         for path in paths:
             with self.subTest(path=path):
                 text = path.read_text()

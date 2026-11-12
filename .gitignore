@@ -1,3 +1,6 @@
 __pycache__/
+*.pyc
+.pytest_cache/
 .history/
+*.lock
 /gf180_mcu/.vs

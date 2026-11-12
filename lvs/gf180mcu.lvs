@@ -24,7 +24,7 @@ exec_start_time = Time.now
 logger = Logger.new(STDOUT)
 
 logger.formatter = proc do |severity, datetime, progname, msg|
-  "#{datetime}: Memory Usage (" + `pmap #{Process.pid} | tail -1`[10,40].strip + ") : #{msg}
+  "#{datetime}: Memory Usage (" + `pmap #{Process.pid} | tail -1`[10,40].to_s.strip + ") : #{msg}
 "
 end
 
@@ -1862,7 +1862,11 @@ ignore_parameter("efuse", "R")
 logger.info("Starting GF180 LVS comparison section")
 
 #=== FLATTEN CELLS ===
-align
+if $schematic
+  align
+else
+  logger.info("NET_ONLY: skipping align (no reference schematic).")
+end
 
 #=== NETLIST EXTRACTION ===
 if SIMPLIFY
